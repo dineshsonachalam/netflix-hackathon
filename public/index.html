@@ -1,0 +1,377 @@
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+    rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+    rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+  <!-- adding google charts -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+
+
+
+
+    $(function() {
+
+
+
+
+   $.getJSON('http://localhost:8000/todo', function(data) {
+
+     const obj = data;
+     console.log(obj);
+      //define variables here
+      var king = [];
+      var rating = [];
+      var total_wins = [];
+      var total_loss = [];
+      var total_battles = [];
+      var battle_details = [];
+
+       $.each(data.person, function(i, f) {
+
+          var z = f.battle_details;
+          battle_details =z;
+
+          var temp = f.king;
+          king.push(temp.toString());
+
+          var temp1 = f.rating;
+          rating.push(temp1);
+
+          var temp2 = f.total_wins;
+          total_wins.push(temp2);
+
+          var temp3 = f.total_loss;
+          total_loss.push(temp3);
+
+          var temp4 = f.total_battles;
+          total_battles.push(temp4);
+
+
+          var tblRow = "<tr>" + "<td>" + f.king + "</td>" +
+           "<td>" + f.rating + "</td>" + "<td>" + f.total_wins
+           + "</td>" + "<td>" + f.total_loss + "</td>" + "<td>" + f.total_battles + "</td>" +  "</tr>"
+           $(tblRow).appendTo("#userdata tbody");
+     });
+
+
+     console.log(king);
+     console.log(rating);
+     console.log(total_battles);
+     console.log(total_loss);
+     console.log(king[0]);
+     console.log(rating[5]);
+     console.log(king.length);
+     console.log(battle_details);
+
+     for (var i = 0; i < 6; i++)
+     {
+       console.log(obj.person[i].king+"\n");
+       for (var j = 0; j < obj.person[i].battle_details.length; j++)
+       {
+          console.log(obj.person[i].battle_details[j].battle_number);
+       }
+     }
+
+     //adding google charts for table
+
+     //// Load Charts and the corechart package (add the chart package before adding any chart)
+     google.charts.load('current', {'packages':['table','corechart', 'bar']});
+
+     google.charts.setOnLoadCallback(drawTable1); //function call
+
+     // Draw the pie chart for total wins of the kings
+      google.charts.setOnLoadCallback(drawTable2);
+
+    // Draw the Donut chart for total loss of the kings
+      google.charts.setOnLoadCallback(drawTable3);
+
+    // Draw the column chart for the total rating of the kings
+      google.charts.setOnLoadCallback(drawTable4);
+
+    // Draw the column chart for displaying total wins,total loss and total battles_defender
+     google.charts.setOnLoadCallback(drawTable5);
+
+     function drawTable1() {
+
+
+       var data = new google.visualization.DataTable();
+       data.addColumn('string', 'King');
+       data.addColumn('number', 'Rating');
+       data.addColumn('number', 'Total Wins');
+       data.addColumn('number', 'Total Loss');
+       data.addColumn('number', 'Total Battles');
+     for (var i = 0; i < 6; i++) {
+       data.addRows([
+         [king[i],rating[i],total_wins[i],total_loss[i],total_battles[i]]
+        ]);
+
+
+      }
+       var table = new google.visualization.Table(document.getElementById('table_div'));
+
+       table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+     }
+   //adding google Pie chart for total wins of the king
+
+   function drawTable2() {
+
+          // Create the data table for Sarah's pizza.
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Kings');
+          data.addColumn('number', 'Wins');
+          for (var i = 0; i < 6; i++) {
+          data.addRows([
+            [king[i],total_wins[i]]
+          ]);
+        }
+
+          // Set options for Sarah's pie chart.
+          var options = {title:'Total Winning outcome of the kings',
+                         width:600,
+                         height:600};
+
+          // Instantiate and draw the chart for Sarah's pizza.
+          var chart = new google.visualization.PieChart(document.getElementById('Win_chart_div'));
+          chart.draw(data, options);
+        }
+
+        function drawTable3() {
+
+          for (var i = 0; i < 6; i++)
+    {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Kings');
+        data.addColumn('number', 'Wins');
+        for (var i = 0; i < 6; i++) {
+        data.addRows([
+          [king[i],total_loss[i]]
+        ]);
+      }
+    }
+        var options = {
+          title: 'Total Loss percentage of the kings',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+  }
+
+
+
+
+  function drawTable4() {
+
+
+    for (var i = 0; i < 6; i++)
+{
+
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Kings');
+  data.addColumn('number', 'Ratings');
+  for (var i = 0; i < 6; i++) {
+  data.addRows([
+    [king[i],rating[i]]
+  ]);
+}
+}
+
+
+    /*
+       var data = new google.visualization.arrayToDataTable([
+         ['Galaxy', 'Rating'],
+         ['Canis Major Dwarf', 8000],
+         ['Sagittarius Dwarf', 24000],
+         ['Ursa Major II Dwarf', 30000],
+         ['Lg. Magellanic Cloud', 50000],
+         ['Bootes I', 60000]
+       ]);
+*/
+       var options = {
+         width: 900,
+         chart: {
+           title: 'Rating of the kings',
+           subtitle: 'Total rating achieved by the kings'
+         },
+         series: {
+           0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
+        //   1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
+         },
+         axes: {
+           y: {
+             distance: {label: ''}, // Left y-axis.
+             brightness: {side: 'right', label: 'apparent magnitude'} // Right y-axis.
+           }
+         }
+       };
+
+     var chart = new google.charts.Bar(document.getElementById('rating_div'));
+     chart.draw(data, options);
+   };
+
+
+
+   function drawTable5() {
+     /*
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['2014', 1000, 400, 200],
+          ['2015', 1170, 460, 250],
+          ['2016', 660, 1120, 300],
+          ['2017', 1030, 540, 350]
+        ]);
+*/
+
+for (var i = 0; i < 6; i++)
+{
+
+var data = new google.visualization.DataTable();
+data.addColumn('string', 'Kings');
+data.addColumn('number', 'Total Battles');
+data.addColumn('number', 'Total Wins');
+data.addColumn('number', 'Total Loss');
+for (var i = 0; i < 6; i++) {
+data.addRows([
+[ king[i],total_battles[i],total_wins[i],total_loss[i] ]
+]);
+}
+}
+
+
+        var options = {
+          chart: {
+            title: 'Battle Statistics',
+            subtitle: 'Total battles,Total wins,Total battles',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, options);
+      }
+
+   }); //json function end write code above
+
+}); //function ends here
+
+//console.log(king.length);
+
+
+</script>
+
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><span>Game of Thrones</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="/kings.html">Kings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+
+            <h3 align="center"> Kings Statistics </h3>
+            <br>
+
+
+            <br><br>
+
+
+            <div id="columnchart_material" style="width: 900px; height: 500px;"></div> <!--5th chart--->
+              <br><br>
+        <!--    if you want to add google charts multiple charts on the same division use this table structure -->
+                <table class="columns">
+                  <tr>
+                    <td><div id="Win_chart_div" style="border: 1px solid #ccc"></div><!--2nd chart---></td>
+                    <td><div id="donutchart" style="width: 600px; height: 600px;"></div><!-- 3rd chart---></td>
+                  </tr>
+                </table>
+                <br><br>
+                <div id="rating_div" style="width: 900px; height: 500px;"></div> <!--4th chart--->
+                <br><br>
+                <div id="table_div"></div> <!--1st chart--->
+
+
+
+
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!--adding a  footer-->
+      <footer class="section section-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1>ADP Full Stack Developer Hiring Challenge</h1>
+            <p> This project been build with expressjs, mysql, ajax
+              <br>Implemented Elo Rating algorithm for the kings rating.
+              <br></p>
+          </div>
+          <div class="col-sm-6">
+            <p class="text-info text-right">
+              <br>
+              <br>
+            </p>
+
+            <div class="row">
+            <div class="col-md-12 hidden-lg hidden-md hidden-sm text-left">
+               <a target="_blank" href="https://in.linkedin.com/in/dinesh-sonachalam-346453bb"><i class="fa fa-3x fa-fw text-inverse edin-square edin fa-linkedin-square"></i></a>
+                <a target="_blank" href="https://www.facebook.com/dinesh.sonachalam"><i class="fa fa-3x fa-fw text-inverse fa-facebook"></i></a>
+                <a target="_blank" href="https://plus.google.com/u/0/101208844025592779297/posts"><i class="fa fa-3x fa-fw text-inverse fa-google"></i></a>
+                <a target="_blank" href="skype:live:dineshsonachalam?call"><i class="fa fa-3x fa-fw text-inverse fa-skype"></i></a>
+                <a target="_blank" href="https://github.com/dineshsonachalam"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 hidden-xs text-right">
+                <a target="_blank" href="https://in.linkedin.com/in/dinesh-sonachalam-346453bb"><i class="fa fa-3x fa-fw text-inverse edin-square edin fa-linkedin-square"></i></a>
+                <a target="_blank" href="https://www.facebook.com/dinesh.sonachalam"><i class="fa fa-3x fa-fw text-inverse fa-facebook"></i></a>
+                <a target="_blank" href="https://plus.google.com/u/0/101208844025592779297/posts"><i class="fa fa-3x fa-fw text-inverse fa-google"></i></a>
+                <a target="_blank" href="skype:live:dineshsonachalam?call"><i class="fa fa-3x fa-fw text-inverse fa-skype"></i></a>
+                <a target="_blank" href="https://github.com/dineshsonachalam"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

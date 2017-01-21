@@ -1,0 +1,44 @@
+[
+{
+"king": "Joffrey/Tommen Baratheon",
+"rating": 0,
+"total_wins": 0,
+"total_loss": 0,
+"total_battles": 0
+},
+{
+"king": "Robb Stark",
+"rating": 0,
+"total_wins": 0,
+"total_loss": 0,
+"total_battles": 0
+},
+{
+"king": "Balon/Euron Greyjoy",
+"rating": 0,
+"total_wins": 0,
+"total_loss": 0,
+"total_battles": 0
+},
+{
+"king": "Stannis Baratheon",
+"rating": 0,
+"total_wins": 0,
+"total_loss": 0,
+"total_battles": 0
+},
+{
+"king": "Renly Baratheon",
+"rating": 0,
+"total_wins": 0,
+"total_loss": 0,
+"total_battles": 0
+},
+{
+"king": "Mance Rayder",
+"rating": 0,
+"total_wins": 0,
+"total_loss": 0,
+"total_battles": 0
+}
+]

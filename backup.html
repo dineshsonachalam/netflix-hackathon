@@ -1,0 +1,141 @@
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+    rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+    rel="stylesheet" type="text/css">
+
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+  <!-- adding google charts -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+
+
+
+
+    $(function() {
+
+
+
+
+   $.getJSON('http://localhost:8000/todo', function(data) {
+
+     const obj = data;
+     console.log(obj);
+      //define variables here
+
+
+       $.each(data.person, function(i, f) {
+
+          var tblRow = "<tr>" + "<td>" + f.king + "</td>" +
+           "<td>" + f.rating + "</td>" + "<td>" + f.total_wins
+           + "</td>" + "<td>" + f.total_loss + "</td>" + "<td>" + f.total_battles + "</td>" +  "</tr>"
+           $(tblRow).appendTo("#userdata tbody");
+     });
+
+     for (var i = 0; i < 6; i++)
+     {
+       console.log(obj.person[i].king+"\n");
+       for (var j = 0; j < obj.person[i].battle_details.length; j++)
+       {
+          console.log(obj.person[i].battle_details[j].battle_number);
+       }
+     }
+
+
+
+
+
+
+
+   }); //json function end write code above
+
+}); //function ends here
+
+//console.log(king.length);
+
+function king_Function(sel)
+ {
+
+     var option =  sel.options[sel.selectedIndex].value;
+     var i = option;
+     alert(i);
+
+
+ }
+</script>
+
+
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><span>Game of Thrones</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="kings">Kings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <h2>Choose the king to get more details!</h2>
+        </div>
+      </div>
+    </div>
+
+    <!--Adding select option button-->
+    <style>
+    .my-group .form-control{
+
+      width:50%;
+            }
+    </style>
+  <div class="container">
+    <div class="col-lg-6">
+        <div class="input-group my-group">
+          <script>
+              $("#box1 option:selected").text();
+          </script>
+
+          <select id="king" onChange="king_Function(this);" class="selectpicker form-control" data-live-search="true" >
+                        <option value="0">Joffrey/Tommen Baratheon</option>
+                        <option value="1">Robb Stark</option>
+                        <option value="2">Balon/Euron Greyjoy</option>
+                        <option value="3">Stannis Baratheon</option>
+                        <option value="4">Renly Baratheon</option>
+                        <option value="5">Mance Rayder</option>
+          </select>
+
+
+        </div>
+    </div>
+
+  </div>
+  <br><br>
+  <div id="table_div"></div> <!--1st chart--->
+
+  </body>
+
+</html>

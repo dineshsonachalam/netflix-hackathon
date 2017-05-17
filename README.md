@@ -28,7 +28,7 @@ I have calculated the kings rating using 'Elo rating system' based on win or los
 
 ### FRONTEND
 
-* Implementd front end using HTML, BOOTSTRAP, JS.
+* Implemented front end using HTML, BOOTSTRAP, JS.
 * On every page load I have made a REST call to the above mentioned backend and fetched all the kings details.
 * I have listed the kings based upon their rating
 * When clicked on the king's name I have showed all the details of the king in the same page.

@@ -8,7 +8,7 @@ function Connection() {
       connectionLimit: 10,
       host: 'localhost',
       user: 'root',
-      password: '',
+      password: 'root',
       database: 'todo'
     });
   };
@@ -21,3 +21,5 @@ function Connection() {
 }
 
 module.exports = new Connection();
+
+// alter user 'USER'@'localhost' identified with mysql_native_password by 'PASSWORD'

@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mysql:
+   image: mysql  
+   volumes:
+     - ./data:/var/lib/mysql
+   environment:
+     - MYSQL_ROOT_PASSWORD=root
+   networks:
+     - frontend
+   expose:
+     - "3306"
+  adp:
+    image: "express:1.0.0"
+    restart: always
+    networks:
+      - frontend
+    ports:
+      - "8000:8000"
+
+networks:
+  frontend:

@@ -15,7 +15,7 @@ function Todo()
 
 
 
-
+          console.log("connection:",con);
             con.query('select * from battles', function(err, result)
             {
               counter = Object.keys(result).length;
@@ -425,7 +425,7 @@ for (var i = 0; i < 6; i++)
 
               con.query('select * from rating', function(err, result)
               {
-                counter = Object.keys(result).length;
+                //counter = Object.keys(result).length;
             //    console.log(counter);
                   for(var key in result)
                 {

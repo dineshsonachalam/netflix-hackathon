@@ -1,22 +1,30 @@
 version: '3'
 services:
   mysql:
-   image: mysql  
-   volumes:
-     - ./data:/var/lib/mysql
-   environment:
-     - MYSQL_ROOT_PASSWORD=root
-   networks:
-     - frontend
-   expose:
-     - "3306"
-  adp:
-    image: "express:1.0.0"
-    restart: always
+    image: "dineshsonachalam/mysql:1.0.0"
     networks:
       - frontend
+    restart: always
     ports:
-      - "8000:8000"
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=sample
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+
+
+  adp:
+    image: "dineshsonachalam/adp:1.0.0"
+    depends_on:
+      - mysql
+    networks:
+      - frontend
+    restart: always
+    ports:
+      - "8006:8006"
 
 networks:
   frontend:

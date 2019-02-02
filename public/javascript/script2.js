@@ -11,7 +11,7 @@ function king_Function(sel)
 
 
 
-  $.getJSON('http://localhost:8000/todo', function(data) {
+  $.getJSON('http://localhost:8006/todo', function(data) {
 
     const obj = data;
     console.log(obj);

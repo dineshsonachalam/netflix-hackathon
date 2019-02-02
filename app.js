@@ -23,6 +23,6 @@ var myLogger = function (req, res, next) {
 
 app.use(myLogger)
 
-var server = app.listen(8000, function() {
+var server = app.listen(8006, function() {
   console.log('Server listening on port ' + server.address().port);
 });

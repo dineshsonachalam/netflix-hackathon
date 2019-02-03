@@ -1,7 +1,7 @@
 version: '3'
 services:
   mysql:
-    image: "dineshsonachalam/mysql:1.0.0"
+    image: "mysql:5.7"
     networks:
       - frontend
     restart: always
@@ -10,9 +10,6 @@ services:
     volumes:
       - ./data:/var/lib/mysql
     environment:
-      - MYSQL_PASSWORD=root
-      - MYSQL_DATABASE=sample
-      - MYSQL_USER=root
       - MYSQL_ROOT_PASSWORD=root
 
 

@@ -5,7 +5,7 @@
 
 
 
-   $.getJSON('http://localhost:8006/todo', function(data) {
+   $.getJSON('/todo', function(data) {
 
      const obj = data;
      console.log(obj);

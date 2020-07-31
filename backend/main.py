@@ -1,15 +1,20 @@
-from typing import Optional
-
+import json
+import uvicorn
 from fastapi import FastAPI
+from crud import get_battle_statistics
 
 app = FastAPI()
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+@app.get("/battle_info")
+def read_item():
+    battle_info = json.loads(get_battle_statistics())
+    return battle_info
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+# http://0.0.0.0:8087/docs
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=8087)
+
+
+

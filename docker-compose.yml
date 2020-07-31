@@ -12,7 +12,12 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=simple
       - MYSQL_DATABASE=adp
-
-
+  adp:
+    image: "dineshsonachalam/adp:2.0.0"
+    networks:
+      - frontend
+    restart: always
+    ports:
+    - "8087:8087"
 networks:
   frontend:

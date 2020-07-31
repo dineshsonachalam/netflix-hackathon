@@ -1,0 +1,9 @@
+setup.cfg
+setup.py
+crud/__init__.py
+crud.egg-info/PKG-INFO
+crud.egg-info/SOURCES.txt
+crud.egg-info/dependency_links.txt
+crud.egg-info/entry_points.txt
+crud.egg-info/top_level.txt
+crud.egg-info/zip-safe

@@ -1,7 +1,8 @@
 version: '3'
 services:
   mysql:
-    image: "mysql:5.7"
+    platform: linux/x86_64
+    image: mysql:5.7
     networks:
       - frontend
     restart: always
@@ -12,12 +13,12 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=simple
       - MYSQL_DATABASE=adp
-  adp:
-    image: "dineshsonachalam/adp:2.0.0"
-    networks:
-      - frontend
-    restart: always
-    ports:
-    - "8087:8087"
+  # adp:
+  #   image: "dineshsonachalam/adp:2.0.0"
+  #   networks:
+  #     - frontend
+  #   restart: always
+  #   ports:
+  #   - "8087:8087"
 networks:
   frontend:

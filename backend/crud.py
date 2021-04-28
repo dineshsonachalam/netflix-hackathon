@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from elo import Rating
 import json
 
-SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:simple@mysql:3306/adp"
+SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:simple@127.0.0.1:3306/adp"
 
 # Define the MySQL engine using MySQL Connector/Python
 engine = create_engine(SQLALCHEMY_DATABASE_URL)

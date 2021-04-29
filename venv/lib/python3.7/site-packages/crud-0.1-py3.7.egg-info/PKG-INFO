@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: crud
+Version: 0.1
+Summary: CRUD operations for wsgi applications
+Home-page: UNKNOWN
+Author: Chris Perkins
+Author-email: chris@percious.com
+License: MIT
+Description: UNKNOWN
+Keywords: CRUD WSGI admin mongo ming sprox toscawidgets sqlalchemy
+Platform: UNKNOWN

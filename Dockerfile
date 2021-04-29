@@ -1,19 +1,22 @@
-FROM node:8
+# Here we are creating an image for python alphine image.(https://hub.docker.com/r/library/python/)
+FROM python:3
 
-# Create app directory
-WORKDIR /usr/src/app
+CMD ["mkdir","/app/backend"]
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
+# Copying the entire application to the docker container in the app directory.
+COPY ./backend /app/backend
 
-RUN npm install
-# If you are building your code for production
-# RUN npm install --only=production
 
-# Bundle app source
-COPY . .
+# WORKDIR is nothing but current directory (cd app)
+WORKDIR /app/backend
 
-EXPOSE 8006
-CMD [ "node", "app.js" ]
+# Install the requirements in the current directory.
+RUN pip install -r requirements.txt
+
+
+# It executes the command python app.py in the app directory.# start gunicorn
+CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8087", "main:app"]
+
+
+EXPOSE 8087
+

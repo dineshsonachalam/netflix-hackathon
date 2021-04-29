@@ -1,27 +1,24 @@
 version: '3'
 services:
   mysql:
-    image: "mysql:5.7"
+    platform: linux/x86_64
+    image: mysql:5.7
     networks:
       - frontend
     restart: always
     ports:
       - "3306:3306"
     volumes:
-      - ./data:/var/lib/mysql
+      - ./mysql-dump:/docker-entrypoint-initdb.d
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-
-
-  adp:
-    image: "dineshsonachalam/adp:1.0.0"
-    depends_on:
-      - mysql
-    networks:
-      - frontend
-    restart: always
-    ports:
-      - "8006:8006"
-
+      - MYSQL_ROOT_PASSWORD=simple
+      - MYSQL_DATABASE=adp
+  # adp:
+  #   image: "dineshsonachalam/adp:2.0.0"
+  #   networks:
+  #     - frontend
+  #   restart: always
+  #   ports:
+  #   - "8087:8087"
 networks:
   frontend:

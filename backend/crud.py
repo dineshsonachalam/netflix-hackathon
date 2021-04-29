@@ -37,20 +37,33 @@ def get_battle_statistics():
 
         attacker_rating, defender_rating = Rating(attacker_rating, defender_rating, attacker_outcome).find_rating()
 
-        attacker_yearly_rating = battle_stats.get(attacker_king).get('yearly_ratings', {})
-        attacker_yearly_rating[year] = attacker_rating
-        defender_yearly_rating = battle_stats.get(defender_king).get('yearly_ratings', {})
-        defender_yearly_rating[year] = defender_rating
+        
+        attacker_king_battle_details = battle_stats.get(attacker_king).get('battle_details', [])
+        defender_king_battle_details = battle_stats.get(defender_king).get('battle_details', [])
+        
 
         if len(attacker_outcome) > 0 and attacker_outcome == "win":
-
+            attacker_king_battle_details.append({
+                "year": year,
+                "role": "Attacker",
+                "opponent": defender_king,
+                "battle_outcome": "Win",
+                "rating": attacker_rating
+            })
+            defender_king_battle_details.append({
+                "year": year,
+                "role": "Defender",
+                "opponent": attacker_king,
+                "battle_outcome": "Loss",
+                "rating": defender_rating
+            })
+            
             battle_stats[attacker_king] = {
                 "wins": battle_stats.get(attacker_king).get('wins', 0) + 1,
                 "battles": battle_stats.get(attacker_king).get('battles', 0) + 1,
                 "loss": battle_stats.get(attacker_king).get('loss', 0),
                 "ratings": attacker_rating,
-                "yearly_ratings": attacker_yearly_rating
-
+                "battle_details": attacker_king_battle_details
             }
 
             battle_stats[defender_king] = {
@@ -58,23 +71,38 @@ def get_battle_statistics():
                 "battles": battle_stats.get(defender_king).get('battles', 0) + 1,
                 "loss": battle_stats.get(defender_king).get('loss', 0) + 1,
                 "ratings": defender_rating,
-                "yearly_ratings": defender_yearly_rating
+                "battle_details": defender_king_battle_details
             }
         elif len(attacker_outcome) > 0 and attacker_outcome == "loss":
-            battle_stats[defender_king] = {
-                "wins": battle_stats.get(defender_king).get('wins', 0) + 1,
-                "battles": battle_stats.get(defender_king).get('battles', 0) + 1,
-                "loss": battle_stats.get(defender_king).get('loss', 0),
-                "ratings": defender_rating,
-                "yearly_ratings": defender_yearly_rating
-            }
+            attacker_king_battle_details.append({
+                "year": year,
+                "role": "Attacker",
+                "opponent": defender_king,
+                "battle_outcome": "Loss",
+                "rating": attacker_rating
+            })
+            defender_king_battle_details.append({
+                "year": year,
+                "role": "Defender",
+                "opponent": attacker_king,
+                "battle_outcome": "Win",
+                "rating": defender_rating
+            })
             battle_stats[attacker_king] = {
                 "wins": battle_stats.get(attacker_king).get('wins', 0),
                 "battles": battle_stats.get(attacker_king).get('battles', 0) + 1,
                 "loss": battle_stats.get(attacker_king).get('loss', 0) + 1,
                 "ratings": attacker_rating,
-                "yearly_ratings": attacker_yearly_rating
+                "battle_details": attacker_king_battle_details
             }
+            battle_stats[defender_king] = {
+                "wins": battle_stats.get(defender_king).get('wins', 0) + 1,
+                "battles": battle_stats.get(defender_king).get('battles', 0) + 1,
+                "loss": battle_stats.get(defender_king).get('loss', 0),
+                "ratings": defender_rating,
+                "battle_details": defender_king_battle_details
+            }
+
     if battle_stats.get(''):
         battle_stats['Unknown'] = battle_stats.pop('')
 

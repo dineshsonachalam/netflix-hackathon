@@ -6,7 +6,7 @@ from crud import get_battle_statistics
 app = FastAPI()
 
 
-@app.get("/battle_info")
+@app.get("/battles")
 def read_item():
     battle_info = json.loads(get_battle_statistics())
     return battle_info

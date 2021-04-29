@@ -1,3 +1,4 @@
+
 ### Todo:
 1. Bar graph wins vs loss vs total battles.
 2. Bar graph for user rating.

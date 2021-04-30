@@ -1,4 +1,3 @@
-
 ### Todo:
 1. Bar graph wins vs loss vs total battles. - BattleStatsBarGraph.js (Done)
 2. Battle stats details in a table -> king, wins, loss, battles, rating. - BattleStatsTable.js

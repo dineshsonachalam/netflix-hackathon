@@ -1,43 +1,13 @@
 import React from 'react';
 import { Column } from '@ant-design/charts';
+import { connect } from 'react-redux';
+import { PageHeader} from 'antd';
 
 class BattleStatsColumnChart extends React.Component {
 
       render() {
-            let data = [
-                  {'name': 'Total Battles', 'king': 'Joffrey/Tommen Baratheon', 'value': 15
-                  },
-                  {'name': 'Total Wins', 'king': 'Joffrey/Tommen Baratheon', 'value': 8
-                  },
-                  {'name': 'Total Loss', 'king': 'Joffrey/Tommen Baratheon', 'value': 7
-                  },
-                  {'name': 'Total Battles', 'king': 'Robb Stark', 'value': 19
-                  },
-                  {'name': 'Total Wins', 'king': 'Robb Stark', 'value': 8
-                  },
-                  {'name': 'Total Loss', 'king': 'Robb Stark', 'value': 11
-                  },
-                  {'name': 'Total Battles', 'king': 'Balon/Euron Greyjoy', 'value': 7
-                  },
-                  {'name': 'Total Wins', 'king': 'Balon/Euron Greyjoy', 'value': 5
-                  },
-                  {'name': 'Total Loss', 'king': 'Balon/Euron Greyjoy', 'value': 2
-                  },
-                  {'name': 'Total Battles', 'king': 'Stannis Baratheon', 'value': 2
-                  },
-                  {'name': 'Total Wins', 'king': 'Stannis Baratheon', 'value': 1
-                  },
-                  {'name': 'Total Loss', 'king': 'Stannis Baratheon', 'value': 1
-                  },
-                  {'name': 'Total Battles', 'king': 'Renly Baratheon', 'value': 1
-                  },
-                  {'name': 'Total Wins', 'king': 'Renly Baratheon', 'value': 0
-                  },
-                  {'name': 'Total Loss', 'king': 'Renly Baratheon', 'value': 1
-                  }
-              ];
-            let config = {
-                  data: data,
+            const config = {
+                  data: this.props.battleStatsColumnChartData,
                   isGroup: true,
                   xField: 'king',
                   yField: 'value',
@@ -52,13 +22,29 @@ class BattleStatsColumnChart extends React.Component {
                   },
             };
             return (
+                
                 <div>
-                       <Column {...config} />
+                      {(this.props.battleStatsColumnChartData).length>0 &&
+                        <div className="site-page-header-ghost-wrapper">
+                        <PageHeader
+                          title="Battle statistics"
+                        >
+                            <Column {...config} />
+                        </PageHeader>
+                        </div> 
+                      }
                 </div>
             );
       }
 }
 
-export default BattleStatsColumnChart
-
+const mapStateToProps = (state) => {
+      return state.kingStatsReducer;
+}
+    
+const mapDispatchToProps = (dispatch) => {
+      return {}
+}
+    
+export default connect(mapStateToProps, mapDispatchToProps)(BattleStatsColumnChart);
 

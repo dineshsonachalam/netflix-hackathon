@@ -1,33 +1,68 @@
 // Step 2: Create Actions for your Action Types
 
-import { UPDATE_AUTOCOMPLETE_OPTIONS,
-         UPDATE_SEARCH_QUERY,
-         UPDATE_SEARCH_RESULTS} from './actionTypes';
+import {UPDATE_KING, UPDATE_KING_METADATA, UPDATE_KING_BATTLE_RATINGS_LINE_DATA, 
+        UPDATE_KING_BATTLE_WIN_LOSS_PIE_CHART_DATA, UPDATE_KING_BATTLE_DETAILS_TABLE_DATA,
+        UPDATE_BATTLE_STATS_TABLE_DATA, UPDATE_BATTLE_STATS_COLUMN_CHART_DATA} from './actionTypes';
 
-export const updateAutoCompleteOptions = (autocomplete_options) => {
+export const updateKing = (king) => {
     return {
-              type: UPDATE_AUTOCOMPLETE_OPTIONS,
+              type: UPDATE_KING,
               payload: {
-                autocomplete_options: autocomplete_options
+                king: king
               }
     }
 }
 
-export const updateSearchQuery = (search_query) => {
+export const updateKingMetaData = (kingMetaData) => {
   return {
-            type: UPDATE_SEARCH_QUERY,
+            type: UPDATE_KING_METADATA,
             payload: {
-              search_query: search_query
+              kingMetaData: kingMetaData
             }
   }
 }
 
-export const updateSearchResults = (search_results) => {
+export const updateKingBattleRatingsLineData = (kingBattleRatingsLineData) => {
   return {
-            type: UPDATE_SEARCH_RESULTS,
+            type: UPDATE_KING_BATTLE_RATINGS_LINE_DATA,
             payload: {
-              search_results: search_results
+              kingBattleRatingsLineData: kingBattleRatingsLineData
             }
   }
 }
 
+export const updateKingBattleWinLossPieChartData = (kingBattleWinLossPieChartData) => {
+  return {
+            type: UPDATE_KING_BATTLE_WIN_LOSS_PIE_CHART_DATA,
+            payload: {
+              kingBattleWinLossPieChartData: kingBattleWinLossPieChartData
+            }
+  }
+}
+
+export const updateKingBattleDetailsTableData = (kingBattleDetailsTableData) => {
+  return {
+            type: UPDATE_KING_BATTLE_DETAILS_TABLE_DATA,
+            payload: {
+              kingBattleDetailsTableData: kingBattleDetailsTableData
+            }
+  }
+}
+
+export const updateBattleStatsTableData = (battleStatsTableData) => {
+  return {
+            type: UPDATE_BATTLE_STATS_TABLE_DATA,
+            payload: {
+              battleStatsTableData: battleStatsTableData
+            }
+  }
+}
+
+export const updateBattleStatsColumnChartData = (battleStatsColumnChartData) => {
+  return {
+            type: UPDATE_BATTLE_STATS_COLUMN_CHART_DATA,
+            payload: {
+              battleStatsColumnChartData: battleStatsColumnChartData
+            }
+  }
+}

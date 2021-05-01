@@ -1,18 +1,13 @@
 import React from 'react';
 import { Pie } from '@ant-design/charts';
-
+import { connect } from 'react-redux';
+import { PageHeader} from 'antd';
 class KingBattleWinLossPieChart extends React.Component {
       render() {
-        var data = [
-          {
-              "type": "Win",
-              "value": 53
-          },
-          {
-              "type": "Loss",
-              "value": 47
-          }
-      ];
+        let data = [];
+        if(this.props.king){
+          data = this.props.kingMetaData[this.props.king]["win_loss_stats"];
+        }
         var config = {
             appendPadding: 10,
             data: data,
@@ -35,12 +30,29 @@ class KingBattleWinLossPieChart extends React.Component {
         };
             return (
                 <div>
-                    <Pie {...config} />
+                    {this.props.king &&
+                      <div className="site-page-header-ghost-wrapper">
+                      <PageHeader
+                        title="Battle win vs loss percentage"
+                      >
+                          <Pie {...config} />
+                      </PageHeader>
+                      </div> 
+                    }
                 </div>
             );
       }
 }
 
-export default KingBattleWinLossPieChart
+
+const mapStateToProps = (state) => {
+  return state.kingStatsReducer;
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(KingBattleWinLossPieChart);
 
 

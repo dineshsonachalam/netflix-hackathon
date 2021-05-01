@@ -1,38 +1,13 @@
 import React from 'react';
 import { Line } from '@ant-design/charts';
-
+import { connect } from 'react-redux';
+import { PageHeader } from 'antd';
 class KingBattleRatingsLine extends React.Component {
       render() {
-            var data = [
-                  {
-                        battle: '1',
-                        rating: 988.8363438391959,
-                  },
-                  {
-                        battle: '2',
-                        rating: 1088.8363438391959,
-                  },
-                  {
-                        battle: '3',
-                        rating: 992.8363438391959,
-                  },
-                  {
-                        battle: '4',
-                        rating: 992.8363438391959,
-                  },
-                  {
-                        battle: '5',
-                        rating: 988.8363438391959,
-                  },
-                  {
-                        battle: '6',
-                        rating: 1088.8363438391959,
-                  },
-                  {
-                        battle: '7',
-                        rating: 992.8363438391959,
-                  }
-            ];
+            let data = [];
+            if(this.props.king){
+              data = this.props.kingMetaData[this.props.king]["rating_info"];
+            }
             var config = {
                   data: data,
                   xField: 'battle',
@@ -77,12 +52,31 @@ class KingBattleRatingsLine extends React.Component {
             };
             return (
                 <div>
-                      <Line {...config} />
+                      {this.props.king &&
+                          <div className="site-page-header-ghost-wrapper">
+                          <PageHeader
+                            title="Ratings for each battle"
+                          >
+                              <Line {...config} />
+                          </PageHeader>
+                          </div> 
+                      }
                 </div>
             );
       }
 }
 
-export default KingBattleRatingsLine;
+
+const mapStateToProps = (state) => {
+  return state.kingStatsReducer;
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(KingBattleRatingsLine);
+
+
 
 

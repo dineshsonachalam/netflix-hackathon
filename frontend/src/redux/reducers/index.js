@@ -2,6 +2,6 @@
 
 import { combineReducers } from "redux";
 
-import searchReducer from "./searchReducer";
+import kingStatsReducer from "./kingStatsReducer";
 
-export default combineReducers({ searchReducer });
+export default combineReducers({ kingStatsReducer });

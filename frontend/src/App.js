@@ -18,11 +18,11 @@ const { Footer, Content } = Layout;
 class App extends React.Component {
   async getData(url) {
     const response = await fetch(url);
-    return response.json();
+    return response.json(); 
   }
 
   async componentDidMount(){
-      let url = "http://0.0.0.0:8082/battles"
+      let url = "https://api-adp.dineshsonachalam.com/battles"
       const results = await this.getData(url);
       this.props.updateBattleStatsTableData(results["info"]);
       this.props.updateBattleStatsColumnChartData(results["win_loss_data"]);
@@ -35,7 +35,7 @@ class App extends React.Component {
         <Content>
             <div style={{ padding: 24}}>
                     <KingDropDown/>
-                    {this.props.king &&
+                    {this.props.king && (this.props.battleStatsColumnChartData).length>0 &&
                       <div>
                         <KingBattleRatingsLine/>
                         <KingBattleWinLossPieChart/>

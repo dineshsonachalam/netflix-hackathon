@@ -13,12 +13,26 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=simple
       - MYSQL_DATABASE=adp
-  # adp:
-  #   image: "dineshsonachalam/adp:2.0.0"
-  #   networks:
-  #     - frontend
-  #   restart: always
-  #   ports:
-  #   - "8087:8087"
+
+  backend:
+    image: "dineshsonachalam/adp-ny-hackathon-frontend:latest"
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - frontend
+    ports:
+      - "8084:8084"
+    depends_on:
+      - mysql
+         
+  frontend:
+    image: "dineshsonachalam/adp-ny-hackathon-frontend:latest"
+    networks:
+      - frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+      - mysql
 networks:
   frontend:

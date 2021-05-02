@@ -29,7 +29,7 @@ def read_item():
 
 # http://0.0.0.0:8087/docs
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8082)
+    uvicorn.run(app, host="0.0.0.0", port=8084)
 
 
 

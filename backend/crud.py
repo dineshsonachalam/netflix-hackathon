@@ -1,25 +1,27 @@
 from sqlalchemy import create_engine, MetaData, Table
+from sqlalchemy.pool import NullPool
 from sqlalchemy.orm import sessionmaker
 from elo import Rating
 import json
 
-SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:simple@127.0.0.1:3306/adp"
+SQLALCHEMY_DATABASE_URL = "mysql+mysqlconnector://root:simple@mysql:3306/adp"
 
-# Define the MySQL engine using MySQL Connector/Python
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
-metadata = MetaData()
 
-battles = Table('battles', metadata, autoload=True, autoload_with=engine)
-
-DBSession = sessionmaker(bind=engine)
 
 
 
 def get_battle_statistics():
-    session = DBSession()
+    # Define the MySQL engine using MySQL Connector/Python
+    db = create_engine(SQLALCHEMY_DATABASE_URL, poolclass=NullPool)
+    metadata = MetaData()
+
+    battles = Table('battles', metadata, autoload=True, autoload_with=db)
+
+    session = sessionmaker(bind=db)
+    session = session()
     try:
         battle_info = session.query(battles).with_entities(battles.c.attacker_king, battles.c.defender_king,
-                                                        battles.c.attacker_outcome, battles.c.year).all()
+                                                        battles.c.attacker_outcome, battles.c.year).all()                                              
         battle_stats = {}
         battle_details = {}
         battle_details["info"] = []
@@ -208,3 +210,4 @@ def get_battle_statistics():
         return json.dumps(battle_details)
     except Exception as e:
         session.rollback()
+

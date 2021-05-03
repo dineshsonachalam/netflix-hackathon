@@ -28,9 +28,11 @@ dineshsonachalam@macbook ~ % ps -ef | grep nginx
 # To stop the nginx:
 nginx -s stop
 ```
+
+```
 4. Start the docker-compose
 ```
 docker-compose up
 ```
 
-
+5. Open the https://api-adp.dineshsonachalam.com/battles URL in firefox and allow use of self signed certificate.

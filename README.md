@@ -29,7 +29,6 @@ dineshsonachalam@macbook ~ % ps -ef | grep nginx
 nginx -s stop
 ```
 
-```
 4. Start the docker-compose
 ```
 docker-compose up

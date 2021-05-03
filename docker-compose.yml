@@ -15,7 +15,7 @@ services:
       - MYSQL_DATABASE=adp
 
   backend:
-    image: "dineshsonachalam/adp-ny-hackathon-frontend:latest"
+    image: "dineshsonachalam/adp-ny-hackathon-backend:latest"
     environment:
       - PYTHONUNBUFFERED=1
     networks:

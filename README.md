@@ -14,7 +14,8 @@ openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 365 -keyout private.key 
 
 3. Start nginx server:
 ```
-nginx -c /Users/dineshsonachalam/Desktop/ADP-Hackathon/nginx.conf -s reload
+# To start the nginx reverse proxy
+nginx -c /Users/dineshsonachalam/Desktop/ADP-Hackathon/nginx.conf 
 
 dineshsonachalam@macbook ~ % ps -ef | grep nginx
   501  3710     1   0  9:07PM ??         0:00.01 nginx: master process nginx -c /Users/dineshsonachalam/Desktop/ADP-Hackathon/nginx.conf
@@ -23,8 +24,13 @@ dineshsonachalam@macbook ~ % ps -ef | grep nginx
   501  3713  3710   0  9:07PM ??         0:00.02 nginx: worker process
   501  3714  3710   0  9:07PM ??         0:00.03 nginx: worker process
   501  4142  4110   0  9:26PM ttys002    0:00.01 grep nginx
+
+# To stop the nginx:
+nginx -s stop
 ```
 4. Start the docker-compose
 ```
 docker-compose up
 ```
+
+

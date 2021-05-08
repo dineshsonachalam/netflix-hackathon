@@ -21,7 +21,9 @@ jobs:
             -v $(pwd)/mysql-dump:/docker-entrypoint-initdb.d \
             mysql:5.7
             echo "127.0.0.1 mysql" | sudo tee -a /etc/hosts
-            docker exec -it mysql sh -c 'mysql -u root -psimple  --execute="SHOW DATABASES;"; exit $?'
+            docker exec -i mysql sh -c 'mysql -u root -psimple  --execute="SHOW DATABASES;"; exit $?'
+            echo $(pwd)
+            ls
         - name: Install backend and frontend dependencies
           run: |
             pip3 install -r backend/requirements.txt

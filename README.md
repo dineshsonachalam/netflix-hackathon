@@ -47,10 +47,30 @@ KUBE_CONFIG_DATA:
 dineshsonachalam@macbook ~ % cat ~/.kube/config | base64
 ```
 
-docker run -d -p 3306:3306 \
--e "MYSQL_ROOT_PASSWORD=simple" \
--e "MYSQL_DATABASE=adp" \
-mysql:5.7
+```
+Error: uninstall: Release name is invalid: ./helm
+dineshsonachalam@macbook ADP-NY-HACKATHON % helm install adp-app ./helm  
+NAME: adp-app
+LAST DEPLOYED: Sat May  8 20:04:45 2021
+NAMESPACE: kube-system
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+dineshsonachalam@macbook ADP-NY-HACKATHON % git status
+On branch master
+Your branch is up to date with 'origin/master'.
 
+nothing to commit, working tree clean
+dineshsonachalam@macbook ADP-NY-HACKATHON % helm list
+NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS  CHART                            APP VERSION
+adp-app                 kube-system     1               2021-05-08 20:04:45.172474 +0530 IST    deployedadp-ny-hackathon-app-0.1.0       1.0        
+tech-search-engine      kube-system     1               2021-05-08 09:04:54.806979 +0530 IST    deployedtech-courses-search-engine-0.1.0 1.0        
+dineshsonachalam@macbook ADP-NY-HACKATHON % kubectl get deployments -n=dinesh
+NAME              READY   UP-TO-DATE   AVAILABLE   AGE
+adp-backend       1/1     1            1           29s
+adp-frontend      1/1     1            1           29s
+search-backend    1/1     1            1           11h
+search-frontend   1/1     1            1           11h
+```
 
 

@@ -17,6 +17,7 @@ jobs:
             docker run -d -p 3306:3306 \
             -e "MYSQL_ROOT_PASSWORD=simple" \
             -e "MYSQL_DATABASE=adp" \
+            -v $(pwd)/mysql-dump:/docker-entrypoint-initdb.d \
             mysql:5.7
             echo "127.0.0.1 mysql" | sudo tee -a /etc/hosts
         - name: Install backend and frontend dependencies

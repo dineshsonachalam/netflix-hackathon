@@ -1,3 +1,15 @@
+# ADP NY Hackathon
+<p>
+  <a href="https://github.com/dineshsonachalam/ADP-NY-HACKATHON/actions" alt="CI/CD status">
+      <img src="https://github.com/dineshsonachalam/ADP-NY-HACKATHON/actions/workflows/k8-deploy.yml/badge.svg" />
+  </a>
+  <a href="https://www.python.org/downloads/release/python-390/" alt="Python 3.9">
+      <img src="https://img.shields.io/badge/python-3.9-blue.svg" />
+  </a>
+  <a href="https://hub.docker.com/repository/docker/dineshsonachalam/adp-ny-hackathon-backend" alt="Docker pulls">
+      <img src="https://img.shields.io/docker/pulls/dineshsonachalam/adp-ny-hackathon-backend.svg" />
+  </a>
+</p>
 #### Dev environment:
 1. Add the following domains to /etc/hosts that points to localhost.
 ```
@@ -159,3 +171,16 @@ shows databases;
 
 
 docker exec -it mysql sh -c 'mysql -u root -psimple  --execute="SHOW DATABASES;"; exit $?'
+
+
+```
+dineshsonachalam@macbook ADP-NY-HACKATHON % helm install adp-app ./helm
+NAME: adp-app
+LAST DEPLOYED: Sat May  8 22:58:13 2021
+NAMESPACE: kube-system
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+```
+
+helm install tech-courses-search-engine ./helm

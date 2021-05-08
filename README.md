@@ -41,3 +41,8 @@ docker-compose up
 ```
 helm install adp-app ./helm
 ```
+
+KUBE_CONFIG_DATA:
+```
+dineshsonachalam@macbook ~ % cat ~/.kube/config | base64
+```

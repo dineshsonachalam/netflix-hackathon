@@ -6,11 +6,11 @@ on:
       - master
     tags:
       - latest
-  
+
 jobs:
   # integration-tests:
   #     runs-on: ubuntu-latest
-  #     steps: 
+  #     steps:
   #       - uses: actions/checkout@v2
   #       - name: Start the elasticsearch docker container
   #         run: |
@@ -24,7 +24,7 @@ jobs:
   #         run: |
   #           python3 backend/main.py &
   #           sleep 10
-            
+
   #       - name: API testing
   #         run: |
   #           npm run start --prefix frontend &
@@ -36,7 +36,7 @@ jobs:
   #           working-directory: frontend
 
   upload-docker-image:
-    needs: integration-tests
+    # needs: integration-tests
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
@@ -47,7 +47,7 @@ jobs:
           npm i --prefix frontend
           npm run build --prefix frontend
           docker build --no-cache -t dineshsonachalam/adp-ny-hackathon-backend:latest -f backend.Dockerfile .
-          docker build --no-cache -t dineshsonachalam/adp-ny-hackathon-frontend:latest -f frontend.Dockerfile .  
+          docker build --no-cache -t dineshsonachalam/adp-ny-hackathon-frontend:latest -f frontend.Dockerfile .
 
       - name: Log into registry
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -56,7 +56,6 @@ jobs:
         run: |
           docker push dineshsonachalam/adp-ny-hackathon-backend:latest
           docker push dineshsonachalam/adp-ny-hackathon-frontend:latest
-
   # deploy-to-k8-cluster:
   #   needs: upload-docker-image
   #   runs-on: ubuntu-latest
@@ -68,7 +67,6 @@ jobs:
   #       KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
   #     with:
   #       args: rollout restart deployment adp-backend -n=dinesh
-
   #   - name: Verify deployment for Backend app
   #     uses: steebchen/kubectl@master
   #     env:
@@ -76,14 +74,12 @@ jobs:
   #       KUBECTL_VERSION: "1.15"
   #     with:
   #       args: rollout status deployment/adp-backend -n=dinesh
-
   #   - name: Frontend deployment rolling restart to fetch recently build docker image from docker hub.
   #     uses: steebchen/kubectl@master
   #     env:
   #       KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
   #     with:
   #       args: rollout restart deployment adp-frontend -n=dinesh
-
   #   - name: Verify deployment for Frontend app
   #     uses: steebchen/kubectl@master
   #     env:

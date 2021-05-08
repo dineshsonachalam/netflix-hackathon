@@ -46,3 +46,11 @@ KUBE_CONFIG_DATA:
 ```
 dineshsonachalam@macbook ~ % cat ~/.kube/config | base64
 ```
+
+docker run -d -p 3306:3306 \
+-e "MYSQL_ROOT_PASSWORD=simple" \
+-e "MYSQL_DATABASE=adp" \
+mysql:5.7
+
+
+

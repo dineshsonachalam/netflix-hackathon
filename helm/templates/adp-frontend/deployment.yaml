@@ -1,0 +1,25 @@
+# 1. Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.adpFrontend.appName }}
+  name: {{ .Values.adpFrontend.appName }}
+  namespace: {{ .Values.namespace }}
+spec:  
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.adpFrontend.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.adpFrontend.appName }}
+    spec:
+      containers:
+      - name: {{ .Values.adpFrontend.appName }}
+        image: {{ .Values.adpFrontend.image }}
+        imagePullPolicy: Always          
+        ports:
+        - containerPort: {{ .Values.adpFrontend.containerPort }}   
+          name: {{ .Values.adpFrontend.appName }}   

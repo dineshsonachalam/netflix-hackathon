@@ -1,0 +1,24 @@
+namespace: dinesh
+replicas: 1
+
+mysql:
+    image: mysql:5.7
+    containerPort: 3306
+    appName: mysql
+    volumeMountsName: mysql-data
+    volumeMountsPath: /docker-entrypoint-initdb.d
+    
+adpBackend:
+    image: dineshsonachalam/adp-ny-hackathon-backend:latest
+    containerPort: 8084
+    appName: adp-backend
+    ingressRoute: (Host(`api-adp.dineshsonachalam.com`))
+
+adpFrontend:
+    image: dineshsonachalam/adp-ny-hackathon-frontend:latest
+    containerPort: 3000   
+    appName: adp-frontend
+    ingressRoute: (Host(`adp.dineshsonachalam.com`))
+
+
+

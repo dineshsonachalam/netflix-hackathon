@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.adpBackend.appName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: {{ .Values.adpBackend.ingressRoute }}
+    kind: Rule
+    services:
+    - name: {{ .Values.adpBackend.appName }}
+      port: {{ .Values.adpBackend.containerPort }}   

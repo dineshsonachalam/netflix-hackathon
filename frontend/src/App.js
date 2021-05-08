@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   async componentDidMount(){
-      let url = "https://api-adp.dineshsonachalam.com/battles"
+      let url = process.env.REACT_APP_API_ENDPOINT + "/battles"
       const results = await this.getData(url);
       this.props.updateBattleStatsTableData(results["info"]);
       this.props.updateBattleStatsColumnChartData(results["win_loss_data"]);

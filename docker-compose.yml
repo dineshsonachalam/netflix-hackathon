@@ -24,15 +24,6 @@ services:
       - "8084:8084"
     depends_on:
       - mysql
-         
-  frontend:
-    image: "dineshsonachalam/adp-ny-hackathon-frontend:latest"
-    networks:
-      - frontend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-      - mysql
+      
 networks:
   frontend:

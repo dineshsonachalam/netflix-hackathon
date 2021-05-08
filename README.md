@@ -35,3 +35,9 @@ docker-compose up
 ```
 
 5. Open the https://api-adp.dineshsonachalam.com URL in firefox and allow use of self signed certificate.
+
+
+### Helm install:
+```
+helm install adp-app ./helm
+```

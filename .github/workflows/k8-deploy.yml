@@ -38,10 +38,10 @@ jobs:
             python3 test2-mysql.py
             curl --location --request GET 'http://0.0.0.0:8084/battles'
 
-        - name: API testing
-          run: |
-            npm run start --prefix frontend &
-            pytest backend -s
+        # - name: API testing
+        #   run: |
+        #     npm run start --prefix frontend &
+        #     pytest backend -s
 
         - name: Cypress End to End testing
           uses: cypress-io/github-action@v2

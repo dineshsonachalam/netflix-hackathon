@@ -10,7 +10,7 @@ mysql:
     
 adpBackend:
     image: dineshsonachalam/adp-ny-hackathon-backend:latest
-    containerPort: 8084
+    containerPort: 8001
     appName: adp-backend
     ingressRoute: (Host(`api-adp.dineshsonachalam.com`))
 

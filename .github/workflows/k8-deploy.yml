@@ -30,19 +30,12 @@ jobs:
           run: |
             pip3 install -r backend/requirements.txt
             npm i --prefix frontend
-
-        - name: Kill any process running on Port 8084
-          id: composer-run
-          continue-on-error: true
-          run: lsof -i tcp:8084 | awk 'NR!=1 {print $2}' | xargs kill
         
         - name: Start backend and frontend applications in the background
           run: |
             python3 backend/main.py &
-            sleep 15
-            python3 test1-mysql.py
-            python3 test2-mysql.py
-            curl --location --request GET 'http://0.0.0.0:8084/battles'
+            sleep 5
+            curl --location --request GET 'http://0.0.0.0:8001/battles'
 
         - name: API testing
           run: |

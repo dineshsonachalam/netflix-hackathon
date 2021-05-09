@@ -29,6 +29,11 @@ spec:
       containers:
       - name: {{ .Values.mysql.appName }}
         image: {{ .Values.mysql.image }}
+        args:
+          - --character-set-server=utf8
+          - --innodb_log_buffer_size=800M
+          - --innodb_log_file_size=80M
+          - --max_allowed_packet=8M 
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: "simple"

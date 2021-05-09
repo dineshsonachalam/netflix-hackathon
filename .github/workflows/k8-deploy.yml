@@ -18,7 +18,6 @@ jobs:
             docker run --name mysql \
             -d -p 3306:3306 \
             -e "MYSQL_ROOT_PASSWORD=simple" \
-            -e "MYSQL_DATABASE=adp" \
             -v $(pwd)/mysql-dump:/docker-entrypoint-initdb.d \
             mysql:5.7
             echo $(pwd)

@@ -184,3 +184,5 @@ TEST SUITE: None
 ```
 
 helm install tech-courses-search-engine ./helm
+
+mysql -u root -psimple < /docker-entrypoint-initdb.d/adp.sql

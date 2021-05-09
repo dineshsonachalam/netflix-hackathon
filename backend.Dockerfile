@@ -6,7 +6,7 @@ COPY backend .
 
 RUN pip install -r requirements.txt
 
-EXPOSE 8000
+EXPOSE 8001
 
 RUN chmod +x /app/main.py
 

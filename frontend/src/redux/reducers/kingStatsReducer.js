@@ -5,7 +5,7 @@ import {UPDATE_KING, UPDATE_KING_METADATA, UPDATE_KING_BATTLE_RATINGS_LINE_DATA,
 
 const initialState = { 
     king : "",
-    UPDATE_KING_METADATA : {},
+    kingMetaData : {},
     kingBattleRatingsLineData : [],
     kingBattleWinLossPieChartData : [] ,
     kingBattleDetailsTableData : [],

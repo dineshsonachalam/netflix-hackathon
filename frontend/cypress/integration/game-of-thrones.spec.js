@@ -4,11 +4,11 @@ describe("Search kings", () => {
     })
     it('Select king', () => {
         cy.get('.ant-select-selector').type('joffrey').type('{enter}')
-        // cy.wait(5000)
+        cy.wait(5000)
     })
 
     it('Compare kings ranking', () => {
-        // cy.wait(10000)
+        cy.wait(10000)
         let expected_kings_data = [
             {
                 "key": 3,

@@ -10,6 +10,9 @@
       <img src="https://img.shields.io/docker/pulls/dineshsonachalam/adp-ny-hackathon-backend.svg" />
   </a>
 </p>
+
+#### To do: 
+1. Create a file loading component and load if redux state is not updated.
 #### Dev environment:
 1. Add the following domains to /etc/hosts that points to localhost.
 ```

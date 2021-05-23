@@ -196,7 +196,7 @@ def get_battle_statistics():
             battle_stats[attacker_king]["rating_info"] = attacker_king_rating_info
             battle_stats[defender_king]["rating_info"] = defender_king_rating_info
         if battle_stats.get(''):
-            battle_stats['Unknown'] = battle_stats.pop('')
+            battle_stats.pop('')
 
         key = 1
         

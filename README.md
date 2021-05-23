@@ -189,3 +189,16 @@ TEST SUITE: None
 helm install tech-courses-search-engine ./helm
 
 mysql -u root -psimple < /docker-entrypoint-initdb.d/adp.sql
+
+
+```
+kubectl exec -it postgres-0 /bin/bash -n=dinesh
+
+
+psql -d dinesh-micro-apps -U dinesh -W
+
+
+gdm-backend-55f5f6cf8b-szmmf
+
+kubectl exec -it gdm-backend-55f5f6cf8b-szmmf /bin/bash -n=dinesh
+```

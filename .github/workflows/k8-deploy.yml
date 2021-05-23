@@ -15,7 +15,7 @@ jobs:
         - name: Start the postgres container
           run: |
             echo "127.0.0.1 postgres" | sudo tee -a /etc/hosts
-            docker run --name postgres \
+            docker run \
             -d -p 5432:5432 \
             -e "POSTGRES_USER=dinesh" \
             -e "POSTGRES_PASSWORD=simple" \

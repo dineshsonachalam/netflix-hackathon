@@ -1,13 +1,6 @@
 namespace: dinesh
 replicas: 1
 
-mysql:
-    image: mysql:5.7
-    containerPort: 3306
-    appName: mysql
-    volumeMountsName: mysql-data
-    volumeMountsPath: /docker-entrypoint-initdb.d
-    
 adpBackend:
     image: dineshsonachalam/adp-ny-hackathon-backend:latest
     containerPort: 8001

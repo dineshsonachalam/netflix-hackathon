@@ -2,10 +2,10 @@ import json
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from crud import get_battle_statistics
-
+from crud import get_battle_statistics, execute_sql_file
 
 app = FastAPI()
+execute_sql_file()
 
 origins = [
     "*"

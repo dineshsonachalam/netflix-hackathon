@@ -1,18 +1,20 @@
 version: '3'
 services:
-  mysql:
-    platform: linux/x86_64
-    image: mysql:5.7
+  postgres:
+    image: "postgres:9.6.21"
     networks:
       - frontend
-    restart: always
     ports:
-      - "3306:3306"
-    volumes:
-      - ./mysql-dump:/docker-entrypoint-initdb.d
+      - "5432:5432"
+    restart: always
+    user: 1000:1000
     environment:
-      - MYSQL_ROOT_PASSWORD=simple
-
+      - POSTGRES_USER=dinesh
+      - POSTGRES_PASSWORD=simple
+      - POSTGRES_DB=dinesh-micro-apps
+    volumes:
+      - ./data:/var/lib/postgresql/data:z # persist data even if container shuts down
+  
   backend:
     image: "dineshsonachalam/adp-ny-hackathon-backend:latest"
     environment:
@@ -22,7 +24,7 @@ services:
     ports:
       - "8001:8001"
     depends_on:
-      - mysql
+      - postgres
       
 networks:
   frontend:

@@ -4,3 +4,4 @@ fastapi==0.63.0
 mysql-connector-python-rf
 requests==2.25.1
 pytest==6.2.4
+psycopg2-binary==2.8.6

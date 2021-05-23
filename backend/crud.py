@@ -17,7 +17,7 @@ def get_sql_session():
 
 def check_if_table_exists():
     try:
-        table = 'adult'
+        table = 'battles'
         db = create_engine(SQLALCHEMY_DATABASE_URL, poolclass=NullPool)
         return inspect(db).has_table(table)
     except Exception as e:

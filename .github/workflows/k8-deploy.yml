@@ -33,8 +33,10 @@ jobs:
         
         - name: Start backend and frontend applications in the background
           run: |
-            python3 backend/main.py &
-            sleep 5
+            cd backend
+            python3 main.py &
+            cd ..
+            sleep 15
             curl --location --request GET 'http://0.0.0.0:8001/battles'
 
         - name: API testing

@@ -7,7 +7,7 @@ import json
 SQLALCHEMY_DATABASE_URL = "postgresql://dinesh:simple@postgres:5432/dinesh-micro-apps"
 
 def get_sql_session():
-    # Define the MySQL engine using MySQL Connector/Python
+    # Define the Postgres engine using Postgres Connector/Python
     db = create_engine(SQLALCHEMY_DATABASE_URL, poolclass=NullPool)
     metadata = MetaData()
     table = Table('battles', metadata, autoload=True, autoload_with=db)  
@@ -44,7 +44,7 @@ def execute_sql_file():
         session.execute(query)
 
 def get_battle_statistics():
-    # Define the MySQL engine using MySQL Connector/Python
+    # Define the Postgres engine using Postgres Connector/Python
     db = create_engine(SQLALCHEMY_DATABASE_URL, poolclass=NullPool)
     metadata = MetaData()
 

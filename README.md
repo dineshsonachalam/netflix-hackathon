@@ -2,7 +2,7 @@
   <img src="https://miro.medium.com/max/7680/1*D1fC_i7VXd2PxbZ63soJGw.jpeg" alt="Netflix-Hackathon">
 </p>
 <p align="center">
-    <em>Game of thrones stats - Powered by Python, PostgreSQL, React, Redux, Kubernetes, Cypress E2E and Github CI/CD</em>
+    <em>Game of thrones stats visualizer - Powered by Python, PostgreSQL, React, Redux, Kubernetes, Cypress E2E and Github CI/CD</em>
 </p>
 <p  align="center">
   <a href="https://github.com/dineshsonachalam/Netflix-Hackathon/actions/workflows/k8-deploy.yml" alt="CI/CD status">

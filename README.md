@@ -1,7 +1,12 @@
-# ADP NY Hackathon
-<p>
-  <a href="https://github.com/dineshsonachalam/ADP-NY-HACKATHON/actions" alt="CI/CD status">
-      <img src="https://github.com/dineshsonachalam/ADP-NY-HACKATHON/actions/workflows/k8-deploy.yml/badge.svg" />
+<p align="center">
+  <img src="https://miro.medium.com/max/7680/1*D1fC_i7VXd2PxbZ63soJGw.jpeg" alt="Gistify">
+</p>
+<p align="center">
+    <em>Powered by Go, PostgreSQL, React, Redux, Kubernetes, Cypress E2E and Github CI/CD</em>
+</p>
+<p  align="center">
+  <a href="https://github.com/dineshsonachalam/Netflix-Hackathon/actions/workflows/k8-deploy.yml" alt="CI/CD status">
+      <img src="https://github.com/dineshsonachalam/Netflix-Hackathon/actions/workflows/k8-deploy.yml/badge.svg" />
   </a>
   <a href="https://www.python.org/downloads/release/python-390/" alt="Python 3.9">
       <img src="https://img.shields.io/badge/python-3.9-blue.svg" />

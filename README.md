@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://miro.medium.com/max/3200/1*_M9cSNHb1CJVlT4bS5df9g.png" alt="Gistify">
+  <img src="https://miro.medium.com/max/7680/1*D1fC_i7VXd2PxbZ63soJGw.jpeg" alt="Netflix-Hackathon">
 </p>
 <p align="center">
-    <em>Powered by Go, PostgreSQL, React, Redux, Kubernetes, Cypress E2E and Github CI/CD</em>
+    <em>Powered by Python, PostgreSQL, React, Redux, Kubernetes, Cypress E2E and Github CI/CD</em>
 </p>
 <p  align="center">
   <a href="https://github.com/dineshsonachalam/Netflix-Hackathon/actions/workflows/k8-deploy.yml" alt="CI/CD status">

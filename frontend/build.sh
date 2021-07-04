@@ -1,5 +1,5 @@
 npm run build
-docker build -t dineshsonachalam/adp-ny-hackathon-frontend:latest .
-docker push dineshsonachalam/adp-ny-hackathon-frontend:latest
+docker build -t dineshsonachalam/netflix-hackathon-frontend:latest .
+docker push dineshsonachalam/netflix-hackathon-frontend:latest
 
 

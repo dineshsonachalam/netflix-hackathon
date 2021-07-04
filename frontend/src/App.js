@@ -47,7 +47,7 @@ class App extends React.Component {
             </div>
         </Content>
         <div  style={ (this.props.king) ? {}: { position:"absolute", bottom:0, color: "blue", width:"100%"  } }>
-            <Footer style={{ textAlign: 'center' }}> Developed with ❤️ by <a href="https://github.com/dineshsonachalam/ADP-NY-HACKATHON" rel="noreferrer" target="_blank">Dinesh Sonachalam</a> © {(new Date().getFullYear())}</Footer> 
+            <Footer style={{ textAlign: 'center' }}> Developed with ❤️ by <a href="https://github.com/dineshsonachalam/netflix-NY-HACKATHON" rel="noreferrer" target="_blank">Dinesh Sonachalam</a> © {(new Date().getFullYear())}</Footer> 
         </div>
       </div>
     );

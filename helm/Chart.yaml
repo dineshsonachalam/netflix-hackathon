@@ -1,6 +1,6 @@
 apiVersion: v2
 appVersion: "1.0"
-description: Helm chart for ADP NY Hackathon application
-name: adp-ny-hackathon-app
+description: Helm chart for netflix NY Hackathon application
+name: netflix-ny-hackathon-app
 owner: dineshsonachalam
 version: 0.1.0

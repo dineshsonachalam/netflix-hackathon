@@ -2,16 +2,16 @@ namespace: dinesh
 replicas: 1
 
 adpBackend:
-    image: dineshsonachalam/adp-ny-hackathon-backend:latest
+    image: dineshsonachalam/netflix-hackathon-backend:latest
     containerPort: 8001
-    appName: adp-backend
-    ingressRoute: (Host(`api-adp.dineshsonachalam.com`))
+    appName: netflix-backend
+    ingressRoute: (Host(`api-netflix.dineshsonachalam.com`))
 
 adpFrontend:
-    image: dineshsonachalam/adp-ny-hackathon-frontend:latest
+    image: dineshsonachalam/netflix-hackathon-frontend:latest
     containerPort: 3000   
-    appName: adp-frontend
-    ingressRoute: (Host(`adp.dineshsonachalam.com`))
+    appName: netflix-frontend
+    ingressRoute: (Host(`netflix.dineshsonachalam.com`))
 
 
 

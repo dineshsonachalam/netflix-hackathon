@@ -60,16 +60,16 @@ jobs:
         run: |
           npm i --prefix frontend
           npm run build --prefix frontend
-          docker build --no-cache -t dineshsonachalam/adp-ny-hackathon-backend:latest -f backend.Dockerfile .
-          docker build --no-cache -t dineshsonachalam/adp-ny-hackathon-frontend:latest -f frontend.Dockerfile .
+          docker build --no-cache -t dineshsonachalam/netflix-hackathon-backend:latest -f backend.Dockerfile .
+          docker build --no-cache -t dineshsonachalam/netflix-hackathon-frontend:latest -f frontend.Dockerfile .
 
       - name: Log into registry
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push image
         run: |
-          docker push dineshsonachalam/adp-ny-hackathon-backend:latest
-          docker push dineshsonachalam/adp-ny-hackathon-frontend:latest
+          docker push dineshsonachalam/netflix-hackathon-backend:latest
+          docker push dineshsonachalam/netflix-hackathon-frontend:latest
   deploy-to-k8-cluster:
     needs: upload-docker-image
     runs-on: ubuntu-latest
@@ -80,24 +80,24 @@ jobs:
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: rollout restart deployment adp-backend -n=dinesh
+        args: rollout restart deployment netflix-backend -n=dinesh
     - name: Verify deployment for Backend app
       uses: steebchen/kubectl@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         KUBECTL_VERSION: "1.15"
       with:
-        args: rollout status deployment/adp-backend -n=dinesh
+        args: rollout status deployment/netflix-backend -n=dinesh
     - name: Frontend deployment rolling restart to fetch recently build docker image from docker hub.
       uses: steebchen/kubectl@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: rollout restart deployment adp-frontend -n=dinesh
+        args: rollout restart deployment netflix-frontend -n=dinesh
     - name: Verify deployment for Frontend app
       uses: steebchen/kubectl@master
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         KUBECTL_VERSION: "1.15"
       with:
-        args: rollout status deployment/adp-frontend -n=dinesh
+        args: rollout status deployment/netflix-frontend -n=dinesh

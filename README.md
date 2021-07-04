@@ -11,8 +11,8 @@
   <a href="https://www.python.org/downloads/release/python-390/" alt="Python 3.9">
       <img src="https://img.shields.io/badge/python-3.9-blue.svg" />
   </a>
-  <a href="https://hub.docker.com/repository/docker/dineshsonachalam/adp-ny-hackathon-backend" alt="Docker pulls">
-      <img src="https://img.shields.io/docker/pulls/dineshsonachalam/adp-ny-hackathon-backend.svg" />
+  <a href="https://hub.docker.com/repository/docker/dineshsonachalam/netflix-hackathon-backend" alt="Docker pulls">
+      <img src="https://img.shields.io/docker/pulls/dineshsonachalam/netflix-hackathon-backend.svg" />
   </a>
 </p>
 
@@ -24,7 +24,7 @@
 dineshsonachalam@macbook ~ % cat /etc/hosts
 127.0.0.1	localhost
 127.0.0.1 mysql
-127.0.0.1 api-adp.dineshsonachalam.com
+127.0.0.1 api-netflix.dineshsonachalam.com
 127.0.0.1 api-search.dineshsonachalam.com
 ```
 2. Generate self signed ssl certificate for localhost and paste in certs-dev folder.
@@ -35,10 +35,10 @@ openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 365 -keyout private.key 
 3. Start nginx server:
 ```
 # To start the nginx reverse proxy
-nginx -c /Users/dineshsonachalam/Desktop/ADP-Hackathon/nginx.conf 
+nginx -c /Users/dineshsonachalam/Desktop/netflix-Hackathon/nginx.conf 
 
 dineshsonachalam@macbook ~ % ps -ef | grep nginx
-  501  3710     1   0  9:07PM ??         0:00.01 nginx: master process nginx -c /Users/dineshsonachalam/Desktop/ADP-Hackathon/nginx.conf
+  501  3710     1   0  9:07PM ??         0:00.01 nginx: master process nginx -c /Users/dineshsonachalam/Desktop/netflix-Hackathon/nginx.conf
   501  3711  3710   0  9:07PM ??         0:00.00 nginx: worker process
   501  3712  3710   0  9:07PM ??         0:00.02 nginx: worker process
   501  3713  3710   0  9:07PM ??         0:00.02 nginx: worker process
@@ -54,12 +54,12 @@ nginx -s stop
 docker-compose up
 ```
 
-5. Open the https://api-adp.dineshsonachalam.com URL in firefox and allow use of self signed certificate.
+5. Open the https://api-netflix.dineshsonachalam.com URL in firefox and allow use of self signed certificate.
 
 
 ### Helm install:
 ```
-helm install adp-app ./helm
+helm install netflix-app ./helm
 ```
 
 KUBE_CONFIG_DATA:
@@ -69,51 +69,51 @@ dineshsonachalam@macbook ~ % cat ~/.kube/config | base64
 
 ```
 Error: uninstall: Release name is invalid: ./helm
-dineshsonachalam@macbook ADP-NY-HACKATHON % helm install adp-app ./helm  
-NAME: adp-app
+dineshsonachalam@macbook netflix-NY-HACKATHON % helm install netflix-app ./helm  
+NAME: netflix-app
 LAST DEPLOYED: Sat May  8 20:04:45 2021
 NAMESPACE: kube-system
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
-dineshsonachalam@macbook ADP-NY-HACKATHON % git status
+dineshsonachalam@macbook netflix-NY-HACKATHON % git status
 On branch master
 Your branch is up to date with 'origin/master'.
 
 nothing to commit, working tree clean
-dineshsonachalam@macbook ADP-NY-HACKATHON % helm list
+dineshsonachalam@macbook netflix-NY-HACKATHON % helm list
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS  CHART                            APP VERSION
-adp-app                 kube-system     1               2021-05-08 20:04:45.172474 +0530 IST    deployedadp-ny-hackathon-app-0.1.0       1.0        
+netflix-app                 kube-system     1               2021-05-08 20:04:45.172474 +0530 IST    deployedadp-ny-hackathon-app-0.1.0       1.0        
 tech-search-engine      kube-system     1               2021-05-08 09:04:54.806979 +0530 IST    deployedtech-courses-search-engine-0.1.0 1.0        
-dineshsonachalam@macbook ADP-NY-HACKATHON % kubectl get deployments -n=dinesh
+dineshsonachalam@macbook netflix-NY-HACKATHON % kubectl get deployments -n=dinesh
 NAME              READY   UP-TO-DATE   AVAILABLE   AGE
-adp-backend       1/1     1            1           29s
-adp-frontend      1/1     1            1           29s
+netflix-backend       1/1     1            1           29s
+netflix-frontend      1/1     1            1           29s
 search-backend    1/1     1            1           11h
 search-frontend   1/1     1            1           11h
 ```
 ```
-dineshsonachalam@macbook ADP-NY-HACKATHON % kubectl get pods -n=dinesh
+dineshsonachalam@macbook netflix-NY-HACKATHON % kubectl get pods -n=dinesh
 NAME                               READY   STATUS    RESTARTS   AGE
-adp-backend-554b87fc9f-7kmc5       1/1     Running   0          33m
-adp-frontend-6b984d7554-pqkms      1/1     Running   0          33m
+netflix-backend-554b87fc9f-7kmc5       1/1     Running   0          33m
+netflix-frontend-6b984d7554-pqkms      1/1     Running   0          33m
 elasticsearch-0                    1/1     Running   0          11h
 mysql-0                            1/1     Running   0          33m
 search-backend-dddf55555-hb6vt     1/1     Running   0          89m
 search-frontend-78fdb94f44-sbhh6   1/1     Running   0          89m
-dineshsonachalam@macbook ADP-NY-HACKATHON %
+dineshsonachalam@macbook netflix-NY-HACKATHON %
 ```
 
 
 
-dineshsonachalam@macbook ADP-NY-HACKATHON % kubectl cp ./mysql-dump/adp.sql dinesh/mysql-0:docker-entrypoint-initdb.d
-dineshsonachalam@macbook ADP-NY-HACKATHON %
+dineshsonachalam@macbook netflix-NY-HACKATHON % kubectl cp ./mysql-dump/adp.sql dinesh/mysql-0:docker-entrypoint-initdb.d
+dineshsonachalam@macbook netflix-NY-HACKATHON %
 
 
 
-dineshsonachalam@macbook ADP-NY-HACKATHON % kubectl exec mysql-0 /bin/bash -n=dinesh
+dineshsonachalam@macbook netflix-NY-HACKATHON % kubectl exec mysql-0 /bin/bash -n=dinesh
 kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
-dineshsonachalam@macbook ADP-NY-HACKATHON % kubectl exec -it mysql-0 /bin/bash -n=dinesh
+dineshsonachalam@macbook netflix-NY-HACKATHON % kubectl exec -it mysql-0 /bin/bash -n=dinesh
 kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
 root@mysql-0:/#
 root@mysql-0:/# mysql
@@ -152,7 +152,7 @@ mysql> show databases;
 | Database           |
 +--------------------+
 | information_schema |
-| adp                |
+| netflix                |
 | mysql              |
 | performance_schema |
 | sys                |
@@ -182,8 +182,8 @@ docker exec -it mysql sh -c 'mysql -u root -psimple  --execute="SHOW DATABASES;"
 
 
 ```
-dineshsonachalam@macbook ADP-NY-HACKATHON % helm install adp-app ./helm
-NAME: adp-app
+dineshsonachalam@macbook netflix-NY-HACKATHON % helm install netflix-app ./helm
+NAME: netflix-app
 LAST DEPLOYED: Sat May  8 22:58:13 2021
 NAMESPACE: kube-system
 STATUS: deployed

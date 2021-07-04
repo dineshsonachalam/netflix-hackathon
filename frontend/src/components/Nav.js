@@ -10,7 +10,7 @@ const Nav = () => (
         {(onLinkClick) =>
             <Menu>
                 <Menu.Item key='/' className={'menu-home'}>
-                    <a onClick={onLinkClick} href={'/'}>ADP NY Hackathon</a>
+                    <a onClick={onLinkClick} href={'/'}>netflix NY Hackathon</a>
                 </Menu.Item>
             </Menu>
         }

@@ -1,3 +1,3 @@
-docker build -t dineshsonachalam/adp-ny-hackathon-backend:latest .
-docker push dineshsonachalam/adp-ny-hackathon-backend:latest
+docker build -t dineshsonachalam/netflix-hackathon-backend:latest .
+docker push dineshsonachalam/netflix-hackathon-backend:latest
 

@@ -16,7 +16,7 @@ services:
       - ./data:/var/lib/postgresql/data:z # persist data even if container shuts down
   
   # backend:
-  #   image: "dineshsonachalam/adp-ny-hackathon-backend:latest"
+  #   image: "dineshsonachalam/netflix-hackathon-backend:latest"
   #   environment:
   #     - PYTHONUNBUFFERED=1
   #   networks:

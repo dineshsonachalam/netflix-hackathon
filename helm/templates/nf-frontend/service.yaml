@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.adpFrontend.appName }}
+  name: {{ .Values.nfFrontend.appName }}
   namespace: {{ .Values.namespace }}
 spec:
   ports:
     - protocol: TCP
       name: web
-      port: {{ .Values.adpFrontend.containerPort }}   
+      port: {{ .Values.nfFrontend.containerPort }}   
   selector:
-    app: {{ .Values.adpFrontend.appName }}
+    app: {{ .Values.nfFrontend.appName }}

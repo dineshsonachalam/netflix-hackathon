@@ -87,16 +87,16 @@ netflix-app                 kube-system     1               2021-05-08 20:04:45.
 tech-search-engine      kube-system     1               2021-05-08 09:04:54.806979 +0530 IST    deployedtech-courses-search-engine-0.1.0 1.0        
 dineshsonachalam@macbook netflix-NY-HACKATHON % kubectl get deployments -n=dinesh
 NAME              READY   UP-TO-DATE   AVAILABLE   AGE
-netflix-backend       1/1     1            1           29s
-netflix-frontend      1/1     1            1           29s
+nf-backend       1/1     1            1           29s
+nf-frontend      1/1     1            1           29s
 search-backend    1/1     1            1           11h
 search-frontend   1/1     1            1           11h
 ```
 ```
 dineshsonachalam@macbook netflix-NY-HACKATHON % kubectl get pods -n=dinesh
 NAME                               READY   STATUS    RESTARTS   AGE
-netflix-backend-554b87fc9f-7kmc5       1/1     Running   0          33m
-netflix-frontend-6b984d7554-pqkms      1/1     Running   0          33m
+nf-backend-554b87fc9f-7kmc5       1/1     Running   0          33m
+nf-frontend-6b984d7554-pqkms      1/1     Running   0          33m
 elasticsearch-0                    1/1     Running   0          11h
 mysql-0                            1/1     Running   0          33m
 search-backend-dddf55555-hb6vt     1/1     Running   0          89m

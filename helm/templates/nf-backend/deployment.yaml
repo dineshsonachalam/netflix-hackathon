@@ -1,0 +1,25 @@
+# 1. Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.nfBackend.appName }}
+  name: {{ .Values.nfBackend.appName }}
+  namespace: {{ .Values.namespace }}
+spec:  
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.nfBackend.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.nfBackend.appName }}
+    spec:
+      containers:
+      - name: {{ .Values.nfBackend.appName }}
+        image: {{ .Values.nfBackend.image }}
+        imagePullPolicy: Always          
+        ports:
+        - containerPort: {{ .Values.nfBackend.containerPort }}   
+          name: {{ .Values.nfBackend.appName }}   

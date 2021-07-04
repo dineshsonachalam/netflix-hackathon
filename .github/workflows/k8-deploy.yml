@@ -75,29 +75,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Backend deployment rolling restart to fetch recently build docker image from docker hub.
-      uses: steebchen/kubectl@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+    - uses: danielr1996/kubectl-action@1.0.0
+      name: Backend deployment rolling restart to fetch recently build docker image from docker hub.
       with:
-        args: rollout restart deployment netflix-backend -n=dinesh
-    - name: Verify deployment for Backend app
-      uses: steebchen/kubectl@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-        KUBECTL_VERSION: "1.15"
+        kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+        args: rollout restart deployment nf-backend -n=dinesh
+    
+    - uses: danielr1996/kubectl-action@1.0.0
+      name: Verify deployment for Backend app
       with:
-        args: rollout status deployment/netflix-backend -n=dinesh
-    - name: Frontend deployment rolling restart to fetch recently build docker image from docker hub.
-      uses: steebchen/kubectl@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+        args: rollout status deployment/nf-backend -n=dinesh
+
+    - uses: danielr1996/kubectl-action@1.0.0
+      name: Frontend deployment rolling restart to fetch recently build docker image from docker hub.
       with:
-        args: rollout restart deployment netflix-frontend -n=dinesh
-    - name: Verify deployment for Frontend app
-      uses: steebchen/kubectl@master
-      env:
-        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-        KUBECTL_VERSION: "1.15"
+        kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+        args: rollout restart deployment nf-frontend -n=dinesh
+    
+    - uses: danielr1996/kubectl-action@1.0.0
+      name: Verify deployment for Frontend app
       with:
-        args: rollout status deployment/netflix-frontend -n=dinesh
+        kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+        args: rollout status deployment/nf-frontend -n=dinesh

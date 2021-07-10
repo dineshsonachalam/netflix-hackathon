@@ -47,7 +47,7 @@ jobs:
         - name: Cypress End to End testing
           run: |
             cd frontend
-            sudo npm i -g cypress
+            sudo npm install -g --unsafe-perm=true --allow-root cypress
             sudo cypress run --headless --browser chrome
 
 

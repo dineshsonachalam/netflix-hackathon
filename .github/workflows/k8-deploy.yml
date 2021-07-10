@@ -45,9 +45,11 @@ jobs:
             pytest backend -s
 
         - name: Cypress End to End testing
-          uses: cypress-io/github-action@v2
-          with:
-            working-directory: frontend
+          run: |
+            cd frontend
+            sudo npm i -g cypress
+            cypress run --headless --browser chrome
+
 
   upload-docker-image:
     needs: integration-tests
@@ -82,7 +84,7 @@ jobs:
         args: rollout restart deployment nf-backend -n=dinesh
     
     - uses: danielr1996/kubectl-action@1.0.0
-      name: Verify deployment for Backend app
+      name: Verify deployment for backend app
       with:
         kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
         args: rollout status deployment/nf-backend -n=dinesh
@@ -94,7 +96,7 @@ jobs:
         args: rollout restart deployment nf-frontend -n=dinesh
     
     - uses: danielr1996/kubectl-action@1.0.0
-      name: Verify deployment for Frontend app
+      name: Verify deployment for frontend app
       with:
         kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
         args: rollout status deployment/nf-frontend -n=dinesh

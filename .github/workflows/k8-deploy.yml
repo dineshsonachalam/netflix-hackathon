@@ -48,7 +48,7 @@ jobs:
           run: |
             cd frontend
             sudo npm i -g cypress
-            cypress run --headless --browser chrome
+            sudo cypress run --headless --browser chrome
 
 
   upload-docker-image:

@@ -53,7 +53,7 @@ def get_battle_statistics():
     session = sessionmaker(bind=db)
     session = session()
     try:
-        battle_info = session.query(battles).with_entities(battles.c.attacker_king, battles.c.defender_king, battles.c.attacker_outcome, battles.c.year).all()                                   
+        battle_info = session.query(battles).with_entities(battles.c.attacker_king, battles.c.defender_king, battles.c.attacker_outcome, battles.c.year).all()            
         battle_stats = {}
         battle_details = {}
         battle_details["info"] = []
@@ -101,7 +101,7 @@ def get_battle_statistics():
                     "battle_outcome": "Loss",
                     "rating": defender_rating
                 })
-                
+
                 battle_stats[attacker_king] = {
                     "wins": battle_stats.get(attacker_king).get('wins', 0) + 1,
                     "battles": battle_stats.get(attacker_king).get('battles', 0) + 1,

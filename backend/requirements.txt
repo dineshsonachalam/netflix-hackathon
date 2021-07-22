@@ -3,4 +3,5 @@ fastapi==0.65.2
 SQLAlchemy==1.4.11
 requests==2.25.1
 pytest==6.2.4
+pytest-cov==2.12.1
 psycopg2-binary==2.8.6

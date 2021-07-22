@@ -9,46 +9,46 @@ export const updateKing = (king) => {
               type: UPDATE_KING,
               payload: {king}
     };
-}
+};
 
 export const updateKingMetaData = (kingMetaData) => {
   return {
             type: UPDATE_KING_METADATA,
             payload: {kingMetaData}
   };
-}
+};
 
 export const updateKingBattleRatingsLineData = (kingBattleRatingsLineData) => {
   return {
             type: UPDATE_KING_BATTLE_RATINGS_LINE_DATA,
             payload: {kingBattleRatingsLineData}
   };
-}
+};
 
 export const updateKingBattleWinLossPieChartData = (kingBattleWinLossPieChartData) => {
   return {
             type: UPDATE_KING_BATTLE_WIN_LOSS_PIE_CHART_DATA,
             payload: {kingBattleWinLossPieChartData}
   };
-}
+};
 
 export const updateKingBattleDetailsTableData = (kingBattleDetailsTableData) => {
   return {
             type: UPDATE_KING_BATTLE_DETAILS_TABLE_DATA,
             payload: {kingBattleDetailsTableData}
   };
-}
+};
 
 export const updateBattleStatsTableData = (battleStatsTableData) => {
   return {
             type: UPDATE_BATTLE_STATS_TABLE_DATA,
             payload: {battleStatsTableData}
   };
-}
+};
 
 export const updateBattleStatsColumnChartData = (battleStatsColumnChartData) => {
   return {
             type: UPDATE_BATTLE_STATS_COLUMN_CHART_DATA,
             payload: {battleStatsColumnChartData}
   };
-}
+};

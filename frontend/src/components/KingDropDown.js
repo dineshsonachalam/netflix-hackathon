@@ -21,37 +21,30 @@ class KingDropDown extends React.Component {
         if(value === "Joffrey/Tommen Baratheon"){
             this.setState({
                 "kingImageURL": "https://cdn.shopify.com/s/files/1/0528/2139/3573/products/King.jpg"
-            })
+            });
         }else if(value === "Robb Stark"){
             this.setState({
                 "kingImageURL": "https://static.wikia.nocookie.net/goff/images/5/50/S3E9_Robb_Stark_main.jpg"
-            })
+            });
         }else if(value === "Balon/Euron Greyjoy"){
             this.setState({
                 "kingImageURL": "https://static.wikia.nocookie.net/gameofthrones/images/f/fc/Euron-Profile.PNG"
-            })
+            });
         }else if(value === "Stannis Baratheon"){
             this.setState({
                 "kingImageURL": "https://static.wikia.nocookie.net/gameofthrones/images/2/2f/StannisNew.png"
-            })
+            });
         }else if(value === "Renly Baratheon"){
             this.setState({
                 "kingImageURL": "https://static.wikia.nocookie.net/gameofthrones/images/f/ff/Profile-Renly_Baratheon.png"
-            })
+            });
         }
     }
-    
-    onBlur() {
-        console.log("blur");
-    }
-    
-    onFocus() {
-        console.log("focus");
-    }
-    
-    onSearch(val) {
-        console.log("search:", val);
-    }
+
+    onBlur() {}
+    onFocus() {}
+    onSearch(val) {}
+
     render() {
             return (
                 <div style={{ padding: 0}}>
@@ -103,7 +96,7 @@ const mapDispatchToProps = (dispatch) => {
       updateKingBattleRatingsLineData: (kingBattleRatingsLineData) => dispatch(updateKingBattleRatingsLineData(kingBattleRatingsLineData)),
       updateKingBattleWinLossPieChartData: (kingBattleWinLossPieChartData) => dispatch(updateKingBattleWinLossPieChartData(kingBattleWinLossPieChartData)),
       updateKingBattleDetailsTableData: (kingBattleDetailsTableData) => dispatch(updateKingBattleDetailsTableData(kingBattleDetailsTableData))
-    }
+    };
 };
   
 export default connect(mapStateToProps, mapDispatchToProps)(KingDropDown);

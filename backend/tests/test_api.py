@@ -1,9 +1,8 @@
 import requests
-import json
 
 def test_battles():
     url = "http://0.0.0.0:8001/battles"
-    response = requests.request("GET", url, headers={}, data={})    
+    response = requests.request("GET", url, headers={}, data={})
     assert response.status_code == 200
     response = response.json()
     expected_response = {

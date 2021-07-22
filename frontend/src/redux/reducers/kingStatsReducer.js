@@ -16,22 +16,22 @@ const initialState = {
 const kingStatsReducer = (state=initialState, actions) => {
     switch(actions.type) {
         case UPDATE_KING:
-            return {...state, king: actions.payload.king}
+            return {...state, king: actions.payload.king};
         case UPDATE_KING_METADATA:
-            return {...state, kingMetaData: actions.payload.kingMetaData}
+            return {...state, kingMetaData: actions.payload.kingMetaData};
         case UPDATE_KING_BATTLE_RATINGS_LINE_DATA:
-            return {...state, kingBattleRatingsLineData: actions.payload.kingBattleRatingsLineData}
+            return {...state, kingBattleRatingsLineData: actions.payload.kingBattleRatingsLineData};
         case UPDATE_KING_BATTLE_WIN_LOSS_PIE_CHART_DATA:
-            return {...state, kingBattleWinLossPieChartData: actions.payload.kingBattleWinLossPieChartData}
+            return {...state, kingBattleWinLossPieChartData: actions.payload.kingBattleWinLossPieChartData};
         case UPDATE_KING_BATTLE_DETAILS_TABLE_DATA:
-            return {...state, kingBattleDetailsTableData: actions.payload.kingBattleDetailsTableData}
+            return {...state, kingBattleDetailsTableData: actions.payload.kingBattleDetailsTableData};
         case UPDATE_BATTLE_STATS_TABLE_DATA:
-            return {...state, battleStatsTableData: actions.payload.battleStatsTableData}
+            return {...state, battleStatsTableData: actions.payload.battleStatsTableData};
         case UPDATE_BATTLE_STATS_COLUMN_CHART_DATA:
-            return {...state, battleStatsColumnChartData: actions.payload.battleStatsColumnChartData}
+            return {...state, battleStatsColumnChartData: actions.payload.battleStatsColumnChartData};
         default:
-            return {...state}
+            return {...state};
     }
-}
+};
 
 export default kingStatsReducer;

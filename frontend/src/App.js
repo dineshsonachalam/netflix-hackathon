@@ -6,9 +6,8 @@ import BattleStatsColumnChart from "./components/BattleStatsColumnChart";
 import BattleStatsTable from "./components/BattleStatsTable";
 import KingDropDown from "./components/KingDropDown";
 
-import Nav from "./components/Nav"
-import {  updateBattleStatsTableData, 
-          updateBattleStatsColumnChartData, updateKingMetaData } from "./redux/actions";
+import Nav from "./components/Nav";
+import {  updateBattleStatsTableData, updateBattleStatsColumnChartData, updateKingMetaData } from "./redux/actions";
 import { connect } from "react-redux";
 
 import { Layout} from "antd";
@@ -22,7 +21,7 @@ class App extends React.Component {
   }
 
   async componentDidMount(){
-      let url = process.env.REACT_APP_API_ENDPOINT + "/battles"
+      let url = process.env.REACT_APP_API_ENDPOINT + "/battles";
       const results = await this.getData(url);
       this.props.updateBattleStatsTableData(results["info"]);
       this.props.updateBattleStatsColumnChartData(results["win_loss_data"]);

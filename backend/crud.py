@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table, func, text, inspect
+from sqlalchemy import create_engine, MetaData, Table, text, inspect
 from sqlalchemy.pool import NullPool
 from sqlalchemy.orm import sessionmaker
 from elo import Rating
@@ -10,7 +10,7 @@ def get_sql_session():
     # Define the Postgres engine using Postgres Connector/Python
     db = create_engine(SQLALCHEMY_DATABASE_URL, poolclass=NullPool)
     metadata = MetaData()
-    table = Table('battles', metadata, autoload=True, autoload_with=db)  
+    table = Table('battles', metadata, autoload=True, autoload_with=db)
     session = sessionmaker(bind=db)
     session = session()
     return table, session
@@ -53,12 +53,11 @@ def get_battle_statistics():
     session = sessionmaker(bind=db)
     session = session()
     try:
-        battle_info = session.query(battles).with_entities(battles.c.attacker_king, battles.c.defender_king,
-                                                        battles.c.attacker_outcome, battles.c.year).all()                                              
+        battle_info = session.query(battles).with_entities(battles.c.attacker_king, battles.c.defender_king, battles.c.attacker_outcome, battles.c.year).all()                                              
         battle_stats = {}
         battle_details = {}
         battle_details["info"] = []
-        battle_details["win_loss_data"] = [] 
+        battle_details["win_loss_data"] = []
         for attacker_king, defender_king, attacker_outcome, year in battle_info:
             if attacker_king == defender_king:
                 continue
@@ -68,29 +67,20 @@ def get_battle_statistics():
             if battle_stats.get(defender_king) is None:
                 battle_stats[defender_king] = {}
                 battle_stats[defender_king]["win_loss_stats"] = []
-                
             if battle_stats.get(attacker_king).get('rating') is None:
                 attacker_rating = 1000
             else:
                 attacker_rating = battle_stats.get(attacker_king).get('rating')
-
             if battle_stats.get(defender_king).get('rating') is None:
                 defender_rating = 1000
             else:
                 defender_rating = battle_stats.get(defender_king).get('rating')
-
-            
-            
+                
             attacker_rating, defender_rating = Rating(attacker_rating, defender_rating, attacker_outcome).find_rating()
             attacker_rating = round(attacker_rating, 5)
             defender_rating = round(defender_rating, 5)
-
-            
-
-            
             attacker_king_battle_details = battle_stats.get(attacker_king).get('battle_details', [])
             defender_king_battle_details = battle_stats.get(defender_king).get('battle_details', [])
-
             attacker_king_rating_info = battle_stats.get(attacker_king).get('rating_info', [])
             defender_king_rating_info = battle_stats.get(defender_king).get('rating_info', [])
 
@@ -241,6 +231,5 @@ def get_battle_statistics():
         
         battle_details["stats"] = battle_stats
         return json.dumps(battle_details)
-    except Exception as e:
+    except Exception:
         session.rollback()
-

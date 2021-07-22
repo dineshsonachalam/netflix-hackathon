@@ -1,8 +1,7 @@
 class Rating:
     """
     A class that represents an implementation of the Elo Rating System
-    
-    Reference - https://metinmediamath.wordpress.com/2013/11/27/how-to-calculate-the-elo-rating-including-example/
+    Reference - https://metinmediamath.wordpress.com/2013/11/27/how-to-calculate-the-elo-rating-including-example
     """
 
     def __init__(self, attacker_rating: object, defender_rating: object, attacker_outcome: object) -> object:  # constructor

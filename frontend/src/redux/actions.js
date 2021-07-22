@@ -10,7 +10,7 @@ export const updateKing = (king) => {
               payload: {
                 king: king
               }
-    }
+    };
 }
 
 export const updateKingMetaData = (kingMetaData) => {
@@ -19,7 +19,7 @@ export const updateKingMetaData = (kingMetaData) => {
             payload: {
               kingMetaData: kingMetaData
             }
-  }
+  };
 }
 
 export const updateKingBattleRatingsLineData = (kingBattleRatingsLineData) => {
@@ -28,7 +28,7 @@ export const updateKingBattleRatingsLineData = (kingBattleRatingsLineData) => {
             payload: {
               kingBattleRatingsLineData: kingBattleRatingsLineData
             }
-  }
+  };
 }
 
 export const updateKingBattleWinLossPieChartData = (kingBattleWinLossPieChartData) => {
@@ -37,7 +37,7 @@ export const updateKingBattleWinLossPieChartData = (kingBattleWinLossPieChartDat
             payload: {
               kingBattleWinLossPieChartData: kingBattleWinLossPieChartData
             }
-  }
+  };
 }
 
 export const updateKingBattleDetailsTableData = (kingBattleDetailsTableData) => {
@@ -46,7 +46,7 @@ export const updateKingBattleDetailsTableData = (kingBattleDetailsTableData) => 
             payload: {
               kingBattleDetailsTableData: kingBattleDetailsTableData
             }
-  }
+  };
 }
 
 export const updateBattleStatsTableData = (battleStatsTableData) => {
@@ -55,7 +55,7 @@ export const updateBattleStatsTableData = (battleStatsTableData) => {
             payload: {
               battleStatsTableData: battleStatsTableData
             }
-  }
+  };
 }
 
 export const updateBattleStatsColumnChartData = (battleStatsColumnChartData) => {
@@ -64,5 +64,5 @@ export const updateBattleStatsColumnChartData = (battleStatsColumnChartData) => 
             payload: {
               battleStatsColumnChartData: battleStatsColumnChartData
             }
-  }
+  };
 }

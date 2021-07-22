@@ -1,7 +1,7 @@
-import React from 'react';
-import { Column } from '@ant-design/charts';
-import { connect } from 'react-redux';
-import { PageHeader} from 'antd';
+import React from "react";
+import { Column } from "@ant-design/charts";
+import { connect } from "react-redux";
+import { PageHeader} from "antd";
 
 class BattleStatsColumnChart extends React.Component {
 
@@ -9,20 +9,19 @@ class BattleStatsColumnChart extends React.Component {
             const config = {
                   data: this.props.battleStatsColumnChartData,
                   isGroup: true,
-                  xField: 'king',
-                  yField: 'value',
-                  seriesField: 'name',
+                  xField: "king",
+                  yField: "value",
+                  seriesField: "name",
                   label: {
-                    position: 'middle',
+                    position: "middle",
                     layout: [
-                      { type: 'interval-adjust-position' },
-                      { type: 'interval-hide-overlap' },
-                      { type: 'adjust-color' },
+                      { type: "interval-adjust-position" },
+                      { type: "interval-hide-overlap" },
+                      { type: "adjust-color" },
                     ]
                   },
             };
             return (
-                
                 <div>
                       {(this.props.battleStatsColumnChartData).length>0 &&
                         <div className="site-page-header-ghost-wrapper">
@@ -40,11 +39,11 @@ class BattleStatsColumnChart extends React.Component {
 
 const mapStateToProps = (state) => {
       return state.kingStatsReducer;
-}
+};
     
 const mapDispatchToProps = (dispatch) => {
-      return {}
-}
+      return {};
+};
     
 export default connect(mapStateToProps, mapDispatchToProps)(BattleStatsColumnChart);
 

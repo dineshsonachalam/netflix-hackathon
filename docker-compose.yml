@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgres:
-    image: "postgres:9.6.21"
+    image: "postgres:12"
     networks:
       - frontend
     ports:
@@ -13,7 +13,8 @@ services:
       - POSTGRES_PASSWORD=simple
       - POSTGRES_DB=dinesh-micro-apps
     volumes:
-      - ./data:/var/lib/postgresql/data:z # persist data even if container shuts down
+      - ./backend/adp.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data:/var/lib/postgresql/data/
   
   # backend:
   #   image: "dineshsonachalam/netflix-hackathon-backend:latest"

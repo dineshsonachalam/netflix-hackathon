@@ -1,39 +1,38 @@
-import React from 'react';
-import { Table} from 'antd';
-import { connect } from 'react-redux';
-import { PageHeader} from 'antd';
+import React from "react";
+import { Table, PageHeader} from "antd";
+import { connect } from "react-redux";
 class BattleStatsTable extends React.Component { 
       render() {
             const columns = [
                   {
-                        title: 'Rank',
-                        dataIndex: 'rank',
-                        key: 'rank',
+                        title: "Rank",
+                        dataIndex: "rank",
+                        key: "rank",
                   },
                   {
-                        title: 'King',
-                        dataIndex: 'king',
-                        key: 'king'
+                        title: "King",
+                        dataIndex: "king",
+                        key: "king"
                   },
                   {
-                        title: 'Rating',
-                        dataIndex: 'rating',
-                        key: 'rating',
+                        title: "Rating",
+                        dataIndex: "rating",
+                        key: "rating",
                   },
                   {
-                        title: 'Wins',
-                        dataIndex: 'wins',
-                        key: 'wins',
+                        title: "Wins",
+                        dataIndex: "wins",
+                        key: "wins",
                   },
                   {
-                        title: 'Loss',
-                        dataIndex: 'loss',
-                        key: 'loss',
+                        title: "Loss",
+                        dataIndex: "loss",
+                        key: "loss",
                   },
                   {
-                        title: 'Battles',
-                        dataIndex: 'battles',
-                        key: 'battles',
+                        title: "Battles",
+                        dataIndex: "battles",
+                        key: "battles",
                   }
             ];        
             return (
@@ -56,10 +55,10 @@ class BattleStatsTable extends React.Component {
 
 const mapStateToProps = (state) => {
       return state.kingStatsReducer;
-}
+};
     
 const mapDispatchToProps = (dispatch) => {
-      return {}
-}
+      return {};
+};
     
 export default connect(mapStateToProps, mapDispatchToProps)(BattleStatsTable);

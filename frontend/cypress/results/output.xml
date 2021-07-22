@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="12.8880" tests="3" failures="1">
+  <testsuite name="Root Suite" timestamp="2021-07-22T07:01:13" tests="0" file="cypress/integration/game-of-thrones.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Search kings" timestamp="2021-07-22T07:01:13" tests="3" time="12.8880" failures="1">
+    <testcase name="Search kings Load search page" time="3.8090" classname="Load search page">
+    </testcase>
+    <testcase name="Search kings Select king" time="9.0790" classname="Select king">
+    </testcase>
+    <testcase name="Search kings Compare kings ranking" time="0.0000" classname="Compare kings ranking">
+      <failure message="expected &apos;2&apos; to deeply equal &apos;1&apos;" type="AssertionError"><![CDATA[AssertionError: expected '2' to deeply equal '1'
+    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/game-of-thrones.spec.js:144:30)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

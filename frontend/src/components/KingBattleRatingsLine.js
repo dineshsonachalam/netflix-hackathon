@@ -1,7 +1,7 @@
-import React from 'react';
-import { Line } from '@ant-design/charts';
-import { connect } from 'react-redux';
-import { PageHeader } from 'antd';
+import React from "react";
+import { Line } from "@ant-design/charts";
+import { connect } from "react-redux";
+import { PageHeader } from "antd";
 class KingBattleRatingsLine extends React.Component {
       render() {
             let data = [];
@@ -10,15 +10,15 @@ class KingBattleRatingsLine extends React.Component {
             }
             var config = {
                   data: data,
-                  xField: 'battle',
-                  yField: 'rating',
+                  xField: "battle",
+                  yField: "rating",
                   label: {},
                   point: {
                     size: 5,
-                    shape: 'circle',
+                    shape: "circle",
                     style: {
-                      fill: 'white',
-                      stroke: '#5B8FF9',
+                      fill: "white",
+                      stroke: "#5B8FF9",
                       lineWidth: 2,
                     },
                   },
@@ -26,10 +26,10 @@ class KingBattleRatingsLine extends React.Component {
                   state: {
                     active: {
                       style: {
-                        shadowColor: 'yellow',
+                        shadowColor: "yellow",
                         shadowBlur: 4,
-                        stroke: 'transparent',
-                        fill: 'red',
+                        stroke: "transparent",
+                        fill: "red",
                       },
                     },
                   },
@@ -39,16 +39,16 @@ class KingBattleRatingsLine extends React.Component {
                         diamond: {
                           active: {
                             style: {
-                              shadowColor: '#FCEBB9',
+                              shadowColor: "#FCEBB9",
                               shadowBlur: 2,
-                              stroke: '#F6BD16',
+                              stroke: "#F6BD16",
                             },
                           },
                         },
                       },
                     },
                   },
-                  interactions: [{ type: 'marker-active' }],
+                  interactions: [{ type: "marker-active" }],
             };
             return (
                 <div>
@@ -69,11 +69,11 @@ class KingBattleRatingsLine extends React.Component {
 
 const mapStateToProps = (state) => {
   return state.kingStatsReducer;
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
-}
+  return {};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(KingBattleRatingsLine);
 

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Select, Image } from 'antd';
+import React from "react";
+import { Select, Image } from "antd";
 import { updateKing, updateKingBattleRatingsLineData, 
          updateKingBattleWinLossPieChartData, updateKingBattleDetailsTableData } from "../redux/actions";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 
 const { Option } = Select;
@@ -42,15 +42,15 @@ class KingDropDown extends React.Component {
     }
     
     onBlur() {
-        console.log('blur');
+        console.log("blur");
     }
     
     onFocus() {
-        console.log('focus');
+        console.log("focus");
     }
     
     onSearch(val) {
-        console.log('search:', val);
+        console.log("search:", val);
     }
     render() {
             return (
@@ -95,16 +95,16 @@ class KingDropDown extends React.Component {
 // https://stackoverflow.com/a/50225424
 const mapStateToProps = (state) => {
     return state.kingStatsReducer;
-  }
+}
   
-  const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
       updateKing: (king) => dispatch(updateKing(king)),
       updateKingBattleRatingsLineData: (kingBattleRatingsLineData) => dispatch(updateKingBattleRatingsLineData(kingBattleRatingsLineData)),
       updateKingBattleWinLossPieChartData: (kingBattleWinLossPieChartData) => dispatch(updateKingBattleWinLossPieChartData(kingBattleWinLossPieChartData)),
       updateKingBattleDetailsTableData: (kingBattleDetailsTableData) => dispatch(updateKingBattleDetailsTableData(kingBattleDetailsTableData))
     }
-  }
+};
   
 export default connect(mapStateToProps, mapDispatchToProps)(KingDropDown);
 

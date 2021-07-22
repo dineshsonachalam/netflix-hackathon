@@ -1,35 +1,34 @@
-import React from 'react';
-import { Table} from 'antd';
-import { connect } from 'react-redux';
-import { PageHeader} from 'antd';
+import React from "react";
+import { Table, PageHeader } from "antd";
+import { connect } from "react-redux";
 
 class KingBattleDetailsTable extends React.Component {
       render() {
             const columns = [
                   {
-                        title: 'Year',
-                        dataIndex: 'year',
-                        key: 'year'
+                        title: "Year",
+                        dataIndex: "year",
+                        key: "year"
                   },
                   {
-                        title: 'Role',
-                        dataIndex: 'role',
-                        key: 'role',
+                        title: "Role",
+                        dataIndex: "role",
+                        key: "role",
                   },
                   {
-                        title: 'Opponent',
-                        dataIndex: 'opponent',
-                        key: 'opponent',
+                        title: "Opponent",
+                        dataIndex: "opponent",
+                        key: "opponent",
                   },
                   {
-                        title: 'Battle Outcome',
-                        dataIndex: 'battle_outcome',
-                        key: 'battle_outcome',
+                        title: "Battle Outcome",
+                        dataIndex: "battle_outcome",
+                        key: "battle_outcome",
                   },
                   {
-                        title: 'Rating',
-                        dataIndex: 'rating',
-                        key: 'rating',
+                        title: "Rating",
+                        dataIndex: "rating",
+                        key: "rating",
                   }
             ];
             return (
@@ -51,11 +50,11 @@ class KingBattleDetailsTable extends React.Component {
 
 const mapStateToProps = (state) => {
     return state.kingStatsReducer;
-}
+};
   
 const mapDispatchToProps = (dispatch) => {
-    return {}
-}
+    return {};
+};
   
 export default connect(mapStateToProps, mapDispatchToProps)(KingBattleDetailsTable);
 

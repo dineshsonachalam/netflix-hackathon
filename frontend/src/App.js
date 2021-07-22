@@ -1,17 +1,17 @@
-import React from 'react';
-import KingBattleRatingsLine from './components/KingBattleRatingsLine';
-import KingBattleWinLossPieChart from './components/KingBattleWinLossPieChart';
-import KingBattleDetailsTable from './components/KingBattleDetailsTable';
+import React from "react";
+import KingBattleRatingsLine from "./components/KingBattleRatingsLine";
+import KingBattleWinLossPieChart from "./components/KingBattleWinLossPieChart";
+import KingBattleDetailsTable from "./components/KingBattleDetailsTable";
 import BattleStatsColumnChart from "./components/BattleStatsColumnChart";
-import BattleStatsTable from './components/BattleStatsTable';
-import KingDropDown from './components/KingDropDown';
+import BattleStatsTable from "./components/BattleStatsTable";
+import KingDropDown from "./components/KingDropDown";
 
 import Nav from "./components/Nav"
 import {  updateBattleStatsTableData, 
           updateBattleStatsColumnChartData, updateKingMetaData } from "./redux/actions";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import { Layout} from 'antd';
+import { Layout} from "antd";
 
 const { Footer, Content } = Layout;
 
@@ -47,7 +47,7 @@ class App extends React.Component {
             </div>
         </Content>
         <div  style={ (this.props.king) ? {}: { position:"absolute", bottom:0, color: "blue", width:"100%"  } }>
-            <Footer style={{ textAlign: 'center' }}> Developed with ❤️ by <a href="https://github.com/dineshsonachalam/netflix-NY-HACKATHON" rel="noreferrer" target="_blank">Dinesh Sonachalam</a> © {(new Date().getFullYear())}</Footer> 
+            <Footer style={{ textAlign: "center" }}> Developed with ❤️ by <a href="https://github.com/dineshsonachalam/netflix-NY-HACKATHON" rel="noreferrer" target="_blank">Dinesh Sonachalam</a> © {(new Date().getFullYear())}</Footer> 
         </div>
       </div>
     );
@@ -57,15 +57,15 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return state.kingStatsReducer;
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     updateBattleStatsTableData: (battleStatsTableData) => dispatch(updateBattleStatsTableData(battleStatsTableData)),
     updateBattleStatsColumnChartData: (battleStatsColumnChartData) => dispatch(updateBattleStatsColumnChartData(battleStatsColumnChartData)),
     updateKingMetaData: (kingMetaData) => dispatch(updateKingMetaData(kingMetaData))
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 

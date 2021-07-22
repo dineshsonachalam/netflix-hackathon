@@ -7,62 +7,48 @@ import {UPDATE_KING, UPDATE_KING_METADATA, UPDATE_KING_BATTLE_RATINGS_LINE_DATA,
 export const updateKing = (king) => {
     return {
               type: UPDATE_KING,
-              payload: {
-                king: king
-              }
+              payload: {king}
     };
 }
 
 export const updateKingMetaData = (kingMetaData) => {
   return {
             type: UPDATE_KING_METADATA,
-            payload: {
-              kingMetaData: kingMetaData
-            }
+            payload: {kingMetaData}
   };
 }
 
 export const updateKingBattleRatingsLineData = (kingBattleRatingsLineData) => {
   return {
             type: UPDATE_KING_BATTLE_RATINGS_LINE_DATA,
-            payload: {
-              kingBattleRatingsLineData: kingBattleRatingsLineData
-            }
+            payload: {kingBattleRatingsLineData}
   };
 }
 
 export const updateKingBattleWinLossPieChartData = (kingBattleWinLossPieChartData) => {
   return {
             type: UPDATE_KING_BATTLE_WIN_LOSS_PIE_CHART_DATA,
-            payload: {
-              kingBattleWinLossPieChartData: kingBattleWinLossPieChartData
-            }
+            payload: {kingBattleWinLossPieChartData}
   };
 }
 
 export const updateKingBattleDetailsTableData = (kingBattleDetailsTableData) => {
   return {
             type: UPDATE_KING_BATTLE_DETAILS_TABLE_DATA,
-            payload: {
-              kingBattleDetailsTableData: kingBattleDetailsTableData
-            }
+            payload: {kingBattleDetailsTableData}
   };
 }
 
 export const updateBattleStatsTableData = (battleStatsTableData) => {
   return {
             type: UPDATE_BATTLE_STATS_TABLE_DATA,
-            payload: {
-              battleStatsTableData: battleStatsTableData
-            }
+            payload: {battleStatsTableData}
   };
 }
 
 export const updateBattleStatsColumnChartData = (battleStatsColumnChartData) => {
   return {
             type: UPDATE_BATTLE_STATS_COLUMN_CHART_DATA,
-            payload: {
-              battleStatsColumnChartData: battleStatsColumnChartData
-            }
+            payload: {battleStatsColumnChartData}
   };
 }

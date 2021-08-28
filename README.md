@@ -24,6 +24,9 @@
   </a>
 </p>
 
+## Demo
+1. <a href="https://netflix.dineshsonachalam.com/">Live demo</a>  
+
 ## Start the application
 
 ```sh
